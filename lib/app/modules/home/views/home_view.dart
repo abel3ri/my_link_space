@@ -7,17 +7,17 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Provider.of<HomeController>(context);
     return Scaffold(
-      body: ChangeNotifierProvider(
-        create: (context) => HomeController(),
-        child: Consumer<HomeController>(
-          builder: (context, homeController, child) => Center(
-            child: Text(
-              "Count: ${homeController.count}",
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
+      body: Center(
+        child: Text(
+          "Count: ${homeController.count}",
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: homeController.increment,
+        child: const Icon(Icons.add),
       ),
     );
   }
