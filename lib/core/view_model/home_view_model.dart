@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeController with ChangeNotifier {
+class HomeViewModel with ChangeNotifier {
   int _count = 0;
 
   void increment() {

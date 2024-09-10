@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:my_link_space/app/modules/home/controllers/home_controller.dart';
-import 'package:my_link_space/core/theme/app_theme.dart';
-import 'package:my_link_space/router/app_router.dart';
+import 'package:my_link_space/core/view_model/home_view_model.dart';
+import 'package:my_link_space/ui/shared/components/theme.dart';
+import 'package:my_link_space/ui/shared/router/app_router.dart';
 import 'package:provider/provider.dart';
 
 void main(List<String> args) {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => HomeController()),
+        ChangeNotifierProvider(create: (context) => HomeViewModel()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

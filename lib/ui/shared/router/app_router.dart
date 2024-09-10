@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:my_link_space/app/modules/error/not_found_view.dart';
-import 'package:my_link_space/app/modules/home/views/home_view.dart';
-import 'package:my_link_space/core/utils/page_transition.dart';
+import 'package:my_link_space/ui/views/home_view.dart';
+import 'package:my_link_space/ui/views/not_found_view.dart';
+import 'package:my_link_space/utils/page_transition.dart';
 
 class AppRouter {
   static final router = GoRouter(
