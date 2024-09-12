@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_link_space/core/view_model/home_view_model.dart';
+import 'package:my_link_space/core/view_models/home_view_model.dart';
 import 'package:my_link_space/ui/shared/components/theme.dart';
 import 'package:my_link_space/ui/shared/router/app_router.dart';
 import 'package:provider/provider.dart';
