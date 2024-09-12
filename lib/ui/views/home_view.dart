@@ -1,23 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:my_link_space/core/view_model/home_view_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_link_space/core/view_models/home_view_model.dart';
+import 'package:my_link_space/ui/views/analytics_view.dart';
+import 'package:my_link_space/ui/views/appearance_view.dart';
+import 'package:my_link_space/ui/views/more_view.dart';
+import 'package:my_link_space/ui/views/preview_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+  final List<Widget> pages = [
+    AppearanceView(),
+    PreviewView(),
+    AnalyticsView(),
+    MoreView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final homeViewmodel = Provider.of<HomeViewModel>(context);
+    final homeViewModel = Provider.of<HomeViewModel>(context);
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: homeViewmodel.increment,
-        child: const Icon(Icons.add),
+      body: IndexedStack(
+        children: pages,
+        index: homeViewModel.index,
       ),
-      body: Center(
-        child: Text(
-          "Count ${homeViewmodel.count}",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        currentIndex: homeViewModel.index,
+        onTap: homeViewModel.onPageChanged,
+        items: [
+          // BottomNavigationBarItem(
+          //   label: "Links",
+          //   icon: FaIcon(FontAwesomeIcons.link),
+          // ),
+          BottomNavigationBarItem(
+            label: "Appearance",
+            icon: FaIcon(FontAwesomeIcons.shapes),
+          ),
+          BottomNavigationBarItem(
+            label: "Preview",
+            icon: FaIcon(FontAwesomeIcons.eye),
+          ),
+          BottomNavigationBarItem(
+            label: "Analytics",
+            icon: FaIcon(FontAwesomeIcons.chartSimple),
+          ),
+          BottomNavigationBarItem(
+            label: "More",
+            icon: FaIcon(FontAwesomeIcons.circle),
+          ),
+        ],
       ),
     );
   }
