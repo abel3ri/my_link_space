@@ -8,9 +8,10 @@ class AppRouter {
     routes: [
       GoRoute(
         path: "/",
+        name: "home",
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
-          child: const HomeView(),
+          child: HomeView(),
         ),
       ),
     ],
