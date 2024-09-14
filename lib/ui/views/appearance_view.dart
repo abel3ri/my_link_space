@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/widgets/custom_app_bar.dart';
 import 'package:my_link_space/ui/widgets/r_button.dart';
+import 'package:my_link_space/ui/widgets/r_container.dart';
+import 'package:my_link_space/ui/widgets/r_su_container.dart';
+import 'package:my_link_space/ui/widgets/r_sub_header_text.dart';
+import 'package:my_link_space/ui/widgets/r_text_button.dart';
+import 'package:my_link_space/ui/widgets/r_upgrade_button.dart';
+import 'package:my_link_space/ui/widgets/theme_link_container.dart';
+import 'package:my_link_space/ui/widgets/theme_link_mini_container.dart';
 
 class AppearanceView extends StatelessWidget {
   const AppearanceView({super.key});
@@ -29,7 +35,7 @@ class AppearanceView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubHeaderText(
+            RSubHeaderText(
               text: "Profile",
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
@@ -223,7 +229,7 @@ class AppearanceView extends StatelessWidget {
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            SubHeaderText(text: "Themes"),
+            RSubHeaderText(text: "Themes"),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RContainer(
               child: GridView(
@@ -301,7 +307,7 @@ class AppearanceView extends StatelessWidget {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            SubHeaderText(text: "Fonts"),
+            RSubHeaderText(text: "Fonts"),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RContainer(
               child: Column(
@@ -364,7 +370,7 @@ class AppearanceView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Hide MyLinkSpace Logo"),
-                      UpgradeButton(),
+                      RUpgradeButton(),
                     ],
                   ),
                 ],
@@ -373,214 +379,6 @@ class AppearanceView extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class UpgradeButton extends StatelessWidget {
-  const UpgradeButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        decoration: BoxDecoration(
-          color: !isDarkMode ? Colors.black : Colors.white,
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: Row(
-          children: [
-            Text(
-              "Upgrade",
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: !isDarkMode ? Colors.white : Colors.black,
-                  ),
-            ),
-            SizedBox(width: 8),
-            FaIcon(
-              FontAwesomeIcons.lock,
-              size: 12,
-              color: !isDarkMode ? Colors.white : Colors.black,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ThemeLinkContainer extends StatelessWidget {
-  const ThemeLinkContainer({
-    super.key,
-    required this.color,
-    required this.themeLinkMiniContainers,
-    required this.themeName,
-  });
-
-  final Color color;
-  final List<Widget> themeLinkMiniContainers;
-  final String themeName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: color,
-            ),
-            child: Column(
-              children: [Spacer(), ...themeLinkMiniContainers, Spacer()],
-            ),
-          ),
-        ),
-        Text(
-          themeName,
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-      ],
-    );
-  }
-}
-
-class ThemeLinkMiniContainer extends StatelessWidget {
-  const ThemeLinkMiniContainer({
-    super.key,
-    required this.color,
-    this.height,
-  });
-
-  final Color color;
-  final double? height;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: color,
-      ),
-    );
-  }
-}
-
-class SubHeaderText extends StatelessWidget {
-  const SubHeaderText({
-    super.key,
-    required this.text,
-  });
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-    );
-  }
-}
-
-class RTextButton extends StatelessWidget {
-  const RTextButton({
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-    super.key,
-  });
-
-  final String label;
-  final IconData icon;
-  final Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton.icon(
-      onPressed: onPressed,
-      label: Text(label),
-      style: ButtonStyle(
-        textStyle: WidgetStatePropertyAll(
-          Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-      ),
-      icon: FaIcon(icon, size: 16),
-    );
-  }
-}
-
-// ignore: must_be_immutable
-class RSubContainer extends StatelessWidget {
-  RSubContainer({
-    super.key,
-    required this.label,
-    required this.value,
-    this.height,
-  });
-
-  final String label;
-  final String value;
-  final double? height;
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      height: height,
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      alignment: Alignment.centerLeft,
-      decoration: BoxDecoration(
-        color: isDarkMode ? Colors.grey.shade700 : Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(label),
-          Text(
-            value,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RContainer extends StatelessWidget {
-  const RContainer({
-    super.key,
-    this.child,
-  });
-
-  final Widget? child;
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: isDarkMode ? cardDarkBackgroundColor : cardLightBackgroundColor,
-      ),
-      child: child,
     );
   }
 }
