@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_link_space/ui/widgets/custom_app_bar.dart';
+import 'package:my_link_space/ui/widgets/link_container.dart';
+import 'package:my_link_space/ui/widgets/r_circle_button.dart';
 
 class PreviewView extends StatelessWidget {
   const PreviewView({super.key});
@@ -121,74 +123,6 @@ class PreviewView extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class LinkContainer extends StatelessWidget {
-  const LinkContainer({
-    super.key,
-    required this.fillColor,
-    required this.icon,
-    required this.label,
-  });
-
-  final Color fillColor;
-  final IconData icon;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: fillColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            child: FaIcon(icon),
-          ),
-          Spacer(),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-            textAlign: TextAlign.center,
-          ),
-          Spacer(),
-        ],
-      ),
-    );
-  }
-}
-
-class RCircleButton extends StatelessWidget {
-  const RCircleButton({
-    super.key,
-    required this.icon,
-  });
-
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      style: ButtonStyle(
-        shape: WidgetStatePropertyAll(
-          CircleBorder(
-            side: BorderSide(
-              width: .5,
-            ),
-          ),
-        ),
-      ),
-      onPressed: () {},
-      icon: FaIcon(icon, size: 20),
     );
   }
 }
