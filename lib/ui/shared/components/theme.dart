@@ -12,6 +12,7 @@ class AppTheme {
       secondaryContainer: secondaryContainerLightColor,
       tertiary: tertiaryLightColor,
       error: errorLightColor,
+      errorContainer: errorContainerLight,
       surface: surfaceLightColor,
     ),
     appBarTheme: const AppBarTheme(
@@ -154,6 +155,7 @@ class AppTheme {
       secondaryContainer: secondaryContainerDarkColor,
       tertiary: tertiaryDarkColor,
       error: errorDarkColor,
+      errorContainer: errorContainerDark,
       surface: surfaceDarkColor,
     ),
   );
