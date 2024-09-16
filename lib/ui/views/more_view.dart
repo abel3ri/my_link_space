@@ -99,7 +99,10 @@ class MoreView extends StatelessWidget {
                           RListTile(
                             leadingIcon: Icons.dark_mode_rounded,
                             title: "Dark",
-                            onPressed: () async {},
+                            onPressed: () async {
+                              await themeViewModel.changeSelectedTheme("dark");
+                              GoRouter.of(context).pop();
+                            },
                             hideTrailing: true,
                           ),
                           RListTile(
