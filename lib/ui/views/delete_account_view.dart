@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_link_space/ui/widgets/r_button.dart';
 import 'package:my_link_space/ui/widgets/r_text_form_field.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 
 class DeleteAccountView extends StatelessWidget {
   const DeleteAccountView({super.key});
@@ -11,7 +12,7 @@ class DeleteAccountView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Delete Account"),
+        title: Text(context.localizations.deleteAccount),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -59,7 +60,7 @@ class DeleteAccountView extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Text(
-              "Please enter 'Delete my account' to confirm",
+              context.localizations.pleaseEnterDeleteMyAccount,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -67,20 +68,20 @@ class DeleteAccountView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             RTextField(
               controller: TextEditingController(),
-              hintText: "Confirmation",
+              hintText: context.localizations.confirmation,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               validator: (value) => null,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.06),
             RButton(
-              label: "YES, Delete My Account",
+              label: context.localizations.yesDeleteMyAccountBtn,
               onPressed: () {},
               fillColor: Theme.of(context).colorScheme.error,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RButton(
-              label: "Cancel",
+              label: context.localizations.cancel,
               onPressed: () {
                 GoRouter.of(context).pop();
               },

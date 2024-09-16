@@ -16,6 +16,7 @@ class LinkContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 48,
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
@@ -26,7 +27,7 @@ class LinkContainer extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            child: FaIcon(icon),
+            child: FaIcon(icon, size: 18),
           ),
           Spacer(),
           Text(

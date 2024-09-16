@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_link_space/ui/widgets/custom_app_bar.dart';
 import 'package:my_link_space/ui/widgets/r_sub_header_text.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 
 class AnalyticsView extends StatelessWidget {
   const AnalyticsView({super.key});
@@ -19,7 +20,7 @@ class AnalyticsView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
-        title: Text("Analytics"),
+        title: Text(context.localizations.analytics),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -28,7 +29,7 @@ class AnalyticsView extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                "Lifetime analytics",
+                context.localizations.lifeTimeAnalytics,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -42,26 +43,26 @@ class AnalyticsView extends StatelessWidget {
               children: [
                 RAnalyticsCol(
                   color: Colors.blue,
-                  label: "Views",
+                  label: context.localizations.views,
                 ),
                 RAnalyticsCol(
                   color: Colors.purple,
-                  label: "Clicks",
+                  label: context.localizations.clicks,
                 ),
                 RAnalyticsCol(
                   color: Colors.red,
-                  label: "Subscribers",
+                  label: context.localizations.subscibers,
                 ),
                 RAnalyticsCol(
                   color: Colors.orange,
-                  label: "Revenue",
+                  label: context.localizations.revenue,
                 ),
               ],
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.04,
             ),
-            RSubHeaderText(text: "Social Icons"),
+            RSubHeaderText(text: context.localizations.socialIcons),
             SizedBox(height: MediaQuery.of(context).size.height * 0.04),
             SizedBox(
               height: 200,

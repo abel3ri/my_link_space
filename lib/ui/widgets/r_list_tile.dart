@@ -23,7 +23,10 @@ class RListTile extends StatelessWidget {
       leading: leadingIcon != null ? FaIcon(leadingIcon) : null,
       title: Text(
         title,
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
       ),
       trailing:
           !hideTrailing ? FaIcon(FontAwesomeIcons.angleRight, size: 16) : null,

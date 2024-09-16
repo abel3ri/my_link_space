@@ -6,6 +6,7 @@ import 'package:my_link_space/ui/views/appearance_view.dart';
 import 'package:my_link_space/ui/views/links_view.dart';
 import 'package:my_link_space/ui/views/more_view.dart';
 import 'package:my_link_space/ui/views/preview_view.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -33,23 +34,23 @@ class HomeView extends StatelessWidget {
         onTap: homeViewModel.onPageChanged,
         items: [
           BottomNavigationBarItem(
-            label: "Links",
+            label: context.localizations.links,
             icon: FaIcon(FontAwesomeIcons.link),
           ),
           BottomNavigationBarItem(
-            label: "Appearance",
+            label: context.localizations.appearance,
             icon: FaIcon(FontAwesomeIcons.shapes),
           ),
           BottomNavigationBarItem(
-            label: "Preview",
+            label: context.localizations.preview,
             icon: FaIcon(FontAwesomeIcons.eye),
           ),
           BottomNavigationBarItem(
-            label: "Analytics",
+            label: context.localizations.analytics,
             icon: FaIcon(FontAwesomeIcons.chartSimple),
           ),
           BottomNavigationBarItem(
-            label: "More",
+            label: context.localizations.more,
             icon: FaIcon(FontAwesomeIcons.circle),
           ),
         ],

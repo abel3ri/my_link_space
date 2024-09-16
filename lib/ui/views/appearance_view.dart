@@ -15,6 +15,7 @@ import 'package:my_link_space/ui/widgets/r_text_button.dart';
 import 'package:my_link_space/ui/widgets/r_upgrade_button.dart';
 import 'package:my_link_space/ui/widgets/theme_link_container.dart';
 import 'package:my_link_space/ui/widgets/theme_link_mini_container.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class AppearanceView extends StatelessWidget {
@@ -23,15 +24,15 @@ class AppearanceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> adItems = [
-      "Remove MyLinkSpace Logo",
-      "Track Performance of all-time Data Including Revenue Earned",
-      "Showcase Latest Content Automatically Via X(formerly Twitter), YouTube, or RSS Feed",
-      "Connect to Google Analytics, Zapier, Facebook pixel and more!",
+      context.localizations.hideMyLinkSpaceLogo,
+      context.localizations.trackPerformance,
+      context.localizations.showcasePerformance,
+      context.localizations.connectToGoogle,
     ];
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
-        title: Text("Appearance"),
+        title: Text(context.localizations.appearance),
       ),
       body: ChangeNotifierProvider(
         create: (context) => ImagePickerViewModel(),
@@ -45,7 +46,7 @@ class AppearanceView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RSubHeaderText(
-                text: "Profile",
+                text: context.localizations.profile,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Consumer<ImagePickerViewModel>(
@@ -86,14 +87,15 @@ class AppearanceView extends StatelessWidget {
                             child: Column(
                               children: [
                                 RButton(
-                                  label: "Pick an image",
+                                  label: context.localizations.pickAnImage,
                                   onPressed: () {
                                     rShowModalBottomSheet(
                                       context: context,
-                                      label: "Add Profile Image",
+                                      label: context.localizations.addAnImage,
                                       listTiles: [
                                         RListTile(
-                                          title: "Choose from library",
+                                          title: context
+                                              .localizations.chooseFromLibrary,
                                           onPressed: () async {
                                             await imagePickerViewModel
                                                 .selectImageFromGallery(
@@ -105,7 +107,8 @@ class AppearanceView extends StatelessWidget {
                                           leadingIcon: FontAwesomeIcons.image,
                                         ),
                                         RListTile(
-                                          title: "Take a Photo",
+                                          title: context
+                                              .localizations.takeAPicture,
                                           hideTrailing: true,
                                           onPressed: () async {
                                             await imagePickerViewModel
@@ -115,7 +118,7 @@ class AppearanceView extends StatelessWidget {
                                           leadingIcon: FontAwesomeIcons.camera,
                                         ),
                                         RListTile(
-                                          title: "Cancel",
+                                          title: context.localizations.cancel,
                                           hideTrailing: true,
                                           onPressed: () {
                                             GoRouter.of(context).pop();
@@ -128,7 +131,7 @@ class AppearanceView extends StatelessWidget {
                                   height: 38,
                                 ),
                                 RButton(
-                                  label: "Remove",
+                                  label: context.localizations.cancel,
                                   onPressed: () {
                                     imagePickerViewModel.clearImage();
                                   },
@@ -143,13 +146,13 @@ class AppearanceView extends StatelessWidget {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04),
                       RSubContainer(
-                        label: "Profile Title",
+                        label: context.localizations.profileTitle,
                         value: "@ktmobiledev",
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
                       RSubContainer(
-                        label: "Bio",
+                        label: context.localizations.bio,
                         value: "Bio",
                         height: MediaQuery.of(context).size.height * 0.1,
                       ),
@@ -159,7 +162,7 @@ class AppearanceView extends StatelessWidget {
                       ),
                       Divider(thickness: .4),
                       RTextButton(
-                        label: "Add social icons",
+                        label: context.localizations.addSocialIcons,
                         onPressed: () {},
                         icon: FontAwesomeIcons.plus,
                       ),
@@ -171,7 +174,9 @@ class AppearanceView extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: 360,
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height * 0.5,
+                    ),
                     padding: EdgeInsets.only(right: 16),
                     decoration: BoxDecoration(
                       color:
@@ -187,22 +192,23 @@ class AppearanceView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              width: MediaQuery.of(context).size.width * 0.35,
+                              width: constraints.maxWidth * 0.35,
                               fit: BoxFit.fill,
                               height: constraints.maxHeight,
                               "assets/asset_1.png",
                             ),
                             SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.04),
+                              width: MediaQuery.of(context).size.width * 0.04,
+                            ),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                      height: constraints.maxHeight * 0.03),
+                                    height: constraints.maxHeight * 0.03,
+                                  ),
                                   Text(
-                                    "Join The Premium",
+                                    context.localizations.joinThePremium,
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!
@@ -213,7 +219,7 @@ class AppearanceView extends StatelessWidget {
                                   SizedBox(
                                       height: constraints.maxHeight * 0.02),
                                   Text(
-                                    "Unlock these features and tons of amazing others.",
+                                    context.localizations.unlockTheseFeatures,
                                     maxLines: 3,
                                     style:
                                         Theme.of(context).textTheme.bodyMedium,
@@ -246,7 +252,7 @@ class AppearanceView extends StatelessWidget {
                                           Expanded(
                                             child: Text(
                                               adItems[index],
-                                              maxLines: 2,
+                                              maxLines: 3,
                                             ),
                                           )
                                         ],
@@ -260,7 +266,8 @@ class AppearanceView extends StatelessWidget {
                                     itemCount: 4,
                                   ),
                                   SizedBox(
-                                      height: constraints.maxHeight * 0.02),
+                                    height: constraints.maxHeight * 0.02,
+                                  ),
                                   Spacer(),
                                   FilledButton(
                                     onPressed: () {
@@ -275,7 +282,7 @@ class AppearanceView extends StatelessWidget {
                                       ),
                                     ),
                                     child: Text(
-                                      "Find out more",
+                                      context.localizations.findOutMore,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!
@@ -305,7 +312,7 @@ class AppearanceView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              RSubHeaderText(text: "Themes"),
+              RSubHeaderText(text: context.localizations.themes),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               RContainer(
                 child: GridView(
@@ -383,7 +390,7 @@ class AppearanceView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              RSubHeaderText(text: "Fonts"),
+              RSubHeaderText(text: context.localizations.fonts),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               RContainer(
                 child: Column(
@@ -447,7 +454,7 @@ class AppearanceView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Hide MyLinkSpace Logo"),
+                        Text(context.localizations.hideMyLinkSpaceLogo),
                         RUpgradeButton(),
                       ],
                     ),

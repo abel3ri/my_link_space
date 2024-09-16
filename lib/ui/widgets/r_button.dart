@@ -49,6 +49,7 @@ class RButton extends StatelessWidget {
         label,
         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               color: filled ? Colors.white : null,
+              fontWeight: FontWeight.bold,
             ),
       ),
     );

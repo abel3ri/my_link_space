@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class RUpgradeButton extends StatelessWidget {
   const RUpgradeButton({
@@ -10,7 +11,9 @@ class RUpgradeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        GoRouter.of(context).pushNamed("upgrade");
+      },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         decoration: BoxDecoration(

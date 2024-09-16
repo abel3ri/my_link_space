@@ -5,6 +5,7 @@ import 'package:my_link_space/core/view_models/link_view_model.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/widgets/custom_app_bar.dart';
 import 'package:my_link_space/ui/widgets/r_button.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class LinksView extends StatelessWidget {
@@ -15,7 +16,7 @@ class LinksView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
-        title: Text("Links"),
+        title: Text(context.localizations.links),
       ),
       body: ChangeNotifierProvider(
         create: (context) => LinkViewModel(),
@@ -27,7 +28,7 @@ class LinksView extends StatelessWidget {
             children: [
               Center(
                 child: RButton(
-                  label: "Add New Link",
+                  label: context.localizations.addNewLink,
                   onPressed: () {
                     GoRouter.of(context).pushNamed("addNewLink");
                   },

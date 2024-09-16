@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_link_space/core/view_models/add_new_link_view_model.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/widgets/r_text_form_field.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 import 'package:my_link_space/utils/form_validator.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class AddNewLinkView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add New Link"),
+        title: Text(context.localizations.addNewLink),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
@@ -24,7 +25,7 @@ class AddNewLinkView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Enter URL",
+              context.localizations.addNewLink,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
@@ -38,7 +39,7 @@ class AddNewLinkView extends StatelessWidget {
                       Expanded(
                         child: RTextField(
                           controller: addNewLinkViewModel.addLinkController,
-                          hintText: "URL",
+                          hintText: context.localizations.url,
                           keyboardType: TextInputType.url,
                           textInputAction: TextInputAction.done,
                           validator: FormValidator.urlValidator,

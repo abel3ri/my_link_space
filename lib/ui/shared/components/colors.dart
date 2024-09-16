@@ -14,7 +14,7 @@ const Color scaffoldBackgroundLightColor = Color.fromARGB(255, 232, 232, 232);
 const Color selectedItemLightColor = Color(0xff9b5fe0);
 const Color unselectedItemLightColor = Colors.grey;
 const Color cardLightBackgroundColor = Colors.white;
-const Color textFieldFillColorLight = Colors.white;
+const Color textFieldFillColorLight = const Color.fromARGB(255, 205, 205, 205);
 
 const Color textFieldFillColorDark = Color.fromARGB(255, 73, 73, 73);
 const chipBackgroundDark = Color.fromARGB(255, 64, 64, 64);
