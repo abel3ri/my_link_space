@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_link_space/ui/widgets/r_button.dart';
 import 'package:my_link_space/ui/widgets/r_text_form_field.dart';
 
@@ -80,7 +81,9 @@ class DeleteAccountView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RButton(
               label: "Cancel",
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).pop();
+              },
               borderColor: Colors.grey,
               filled: false,
             ),
