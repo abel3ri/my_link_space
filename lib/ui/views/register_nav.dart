@@ -4,19 +4,14 @@ import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_link_space/core/view_model/home_view_model.dart';
+import 'package:my_link_space/core/view_models/home_view_model.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/widget/page_view.dart';
 import 'package:provider/provider.dart';
 
-class RegisterNav extends StatefulWidget {
+class RegisterNav extends StatelessWidget {
   const RegisterNav({super.key});
 
-  @override
-  State<RegisterNav> createState() => _RegisterNavState();
-}
-
-class _RegisterNavState extends State<RegisterNav> {
   @override
   Widget build(BuildContext context) {
     final homeViewModel = Provider.of<HomeViewModel>(context);

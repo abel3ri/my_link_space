@@ -4,7 +4,7 @@ import 'package:my_link_space/ui/shared/components/fonts.dart';
 import 'package:my_link_space/ui/shared/components/icon_pack.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class MAterialBtn extends StatefulWidget {
+class MAterialBtn extends StatelessWidget {
   MAterialBtn(
       {super.key,
       required this.width,
@@ -19,17 +19,12 @@ class MAterialBtn extends StatefulWidget {
   final Color colors;
 
   @override
-  State<MAterialBtn> createState() => _MAterialBtnState();
-}
-
-class _MAterialBtnState extends State<MAterialBtn> {
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: onTap,
       child: Container(
-        width: widget.width,
-        height: widget.height,
+        width: width,
+        height: height,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30.2)),
           color: kbutton_finall1,
@@ -39,7 +34,7 @@ class _MAterialBtnState extends State<MAterialBtn> {
           children: [
             const SizedBox(width: 5),
             Text(
-              widget.ttile,
+              ttile,
               style: CustomTextStyles.B1,
             ),
           ],
@@ -49,7 +44,7 @@ class _MAterialBtnState extends State<MAterialBtn> {
   }
 }
 
-class Material2Btn extends StatefulWidget {
+class Material2Btn extends StatelessWidget {
   Material2Btn({
     super.key,
     required this.text,
@@ -60,11 +55,6 @@ class Material2Btn extends StatefulWidget {
   final String images;
   VoidCallback onTap;
 
-  @override
-  State<Material2Btn> createState() => _Material2BtnState();
-}
-
-class _Material2BtnState extends State<Material2Btn> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -81,12 +71,12 @@ class _Material2BtnState extends State<Material2Btn> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(height: 50, width: 50, child: Image.asset(widget.images)),
+            Container(height: 50, width: 50, child: Image.asset(images)),
             SizedBox(
               width: 10,
             ),
             Text(
-              widget.text,
+              text,
               style: CustomTextStyles.D2,
             ),
           ],

@@ -1,5 +1,6 @@
-<<<<<<< HEAD
 import 'dart:ui';
+
+import 'package:flutter/material.dart';
 
 const Color kbackground1 = Color.fromARGB(255, 0, 0, 0);
 Color kbackground2 = const Color.fromRGBO(135, 206, 250, 80);
@@ -12,8 +13,6 @@ const Color kbutton_finall1 = Color.fromRGBO(112, 0, 255, 100);
 const Color kOnSecondaryColor = Color.fromARGB(255, 150, 146, 146);
 const Color kfield_back = Color.fromARGB(255, 255, 255, 255);
 const Color khint = Color.fromRGBO(103, 107, 95, 100);
-=======
-import 'package:flutter/material.dart';
 
 const chipBackgroundLight = Color.fromARGB(255, 215, 215, 215);
 const Color primaryLightColor = Color.fromRGBO(132, 45, 247, 1);
@@ -44,4 +43,3 @@ const Color errorDarkColor = Color(0xffcf6679);
 const Color surfaceDarkColor = Color(0xFF1E1E1E);
 const Color selectedItemDarkColor = Color(0xff9b5fe0);
 const Color unselectedItemDarkColor = Colors.grey;
->>>>>>> 740afc0a62e474dfa3deb37e18b2cb454b51e102

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_intro/flutter_intro.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class MyWidget extends StatelessWidget {
+  MyWidget({super.key});
 
-  @override
-  _MyWidgetState createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
   late OverlayEntry overlayEntry;
+
   Intro intro = Intro(
     padding: const EdgeInsets.all(8),
     borderRadius: const BorderRadius.all(Radius.circular(4)),

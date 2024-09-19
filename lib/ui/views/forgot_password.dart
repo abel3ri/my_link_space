@@ -7,15 +7,11 @@ import 'package:my_link_space/ui/shared/components/fonts.dart';
 import 'package:my_link_space/ui/shared/widget/form.dart';
 import 'package:my_link_space/ui/views/sign_up.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class ForgotPassword extends StatelessWidget {
+  ForgotPassword({super.key});
 
-  @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
-}
-
-class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

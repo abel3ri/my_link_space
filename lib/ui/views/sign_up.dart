@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_link_space/core/view_model/service_view_model.dart';
-import 'package:my_link_space/core/view_model/sign_upvm.dart';
+import 'package:my_link_space/core/view_models/service_view_model.dart';
+import 'package:my_link_space/core/view_models/sign_upvm.dart';
 import 'package:my_link_space/ui/shared/components/button.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';

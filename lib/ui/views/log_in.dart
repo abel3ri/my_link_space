@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_link_space/core/view_model/log_in_view_model.dart';
-import 'package:my_link_space/core/view_model/service_view_model.dart';
+import 'package:my_link_space/core/view_models/log_in_view_model.dart';
+import 'package:my_link_space/core/view_models/service_view_model.dart';
 import 'package:my_link_space/ui/shared/components/button.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';
@@ -10,13 +10,8 @@ import 'package:my_link_space/ui/shared/widget/form.dart';
 import 'package:my_link_space/ui/views/splash_screen.dart';
 import 'package:provider/provider.dart';
 
-class LogIn extends StatefulWidget {
+class LogIn extends StatelessWidget {
   LogIn({super.key});
-  @override
-  State<LogIn> createState() => _LogInState();
-}
-
-class _LogInState extends State<LogIn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

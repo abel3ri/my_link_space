@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:my_link_space/core/view_model/service_view_model.dart';
+import 'package:my_link_space/core/view_models/service_view_model.dart';
 import 'package:my_link_space/ui/views/forgot_password.dart';
 import 'package:my_link_space/ui/views/links.dart';
 import 'package:my_link_space/ui/views/log_in.dart';
@@ -32,7 +32,6 @@ class AppRouter {
     },
     routes: [
       GoRoute(
-<<<<<<< HEAD
         path: '/',
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
@@ -68,7 +67,7 @@ class AppRouter {
         path: '/forgot',
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
-          child: const ForgotPassword(),
+          child: ForgotPassword(),
         ),
       ),
 
@@ -80,13 +79,6 @@ class AppRouter {
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
           child: RegisterNav(),
-=======
-        path: "/",
-        name: "home",
-        pageBuilder: (context, state) => PageTransition(
-          key: state.pageKey,
-          child: HomeView(),
->>>>>>> 740afc0a62e474dfa3deb37e18b2cb454b51e102
         ),
       ),
     ],
