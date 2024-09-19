@@ -32,6 +32,7 @@ class AppRouter {
     },
     routes: [
       GoRoute(
+<<<<<<< HEAD
         path: '/',
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
@@ -79,6 +80,13 @@ class AppRouter {
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
           child: RegisterNav(),
+=======
+        path: "/",
+        name: "home",
+        pageBuilder: (context, state) => PageTransition(
+          key: state.pageKey,
+          child: HomeView(),
+>>>>>>> 740afc0a62e474dfa3deb37e18b2cb454b51e102
         ),
       ),
     ],

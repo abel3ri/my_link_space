@@ -1,9 +1,13 @@
 // PS C:\Users\hp\Desktop\kuraz\my-link-space-main> git show 44dd548ec6ecf1e63f549fbb65e0b0768e0522d9
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:my_link_space/core/view_model/home_view_model.dart';
 import 'package:my_link_space/core/view_model/log_in_view_model.dart';
 import 'package:my_link_space/core/view_model/service_view_model.dart';
+=======
+import 'package:my_link_space/core/view_models/home_view_model.dart';
+>>>>>>> 740afc0a62e474dfa3deb37e18b2cb454b51e102
 import 'package:my_link_space/ui/shared/components/theme.dart';
 import 'package:my_link_space/ui/shared/router/app_router.dart';
 import 'package:provider/provider.dart';
