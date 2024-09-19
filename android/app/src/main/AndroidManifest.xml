@@ -1,8 +1,10 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.my_link_space" >
     <application
         android:label="my_link_space"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/my_link_space"
+        android:roundIcon="@mipmap/my_link_space">
         <activity
             android:name=".MainActivity"
             android:exported="true"

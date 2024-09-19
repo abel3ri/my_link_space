@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
 class HomeViewModel with ChangeNotifier {
-  int _count = 0;
+  final PageController _pageController = PageController();
 
-  void increment() {
-    _count++;
+  PageController get pageController => _pageController;
+
+  void updatePage(int page) {
+    _pageController.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
     notifyListeners();
   }
 
-  int get count => _count;
+  @override
+  void dispose() {
+    _pageController.dispose();
+  }
 }
