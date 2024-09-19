@@ -6,7 +6,7 @@ class PageTransition extends CustomTransitionPage {
     required LocalKey super.key,
     required super.child,
     bool rtl = true,
-    Duration duration = const Duration(milliseconds: 500),
+    Duration duration = const Duration(milliseconds: 400),
     Curve curve = Curves.easeInOut,
   }) : super(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {

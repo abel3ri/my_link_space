@@ -18,7 +18,7 @@ PreferredSize CustomAppBar({
         UpgradeAction(),
         IconButton(
           onPressed: () {},
-          icon: FaIcon(FontAwesomeIcons.shareNodes),
+          icon: FaIcon(Icons.share),
         )
       ],
     ),

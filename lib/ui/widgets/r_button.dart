@@ -8,23 +8,32 @@ class RButton extends StatelessWidget {
     this.height = 52,
     required this.onPressed,
     this.filled = true,
+    this.fillColor,
+    this.borderColor,
   });
 
   final String label;
   double height;
   final Function()? onPressed;
+  Color? fillColor;
+  Color? borderColor;
   bool filled;
 
   @override
   Widget build(BuildContext context) {
     return FilledButton(
       style: ButtonStyle(
-        backgroundColor:
-            !filled ? WidgetStatePropertyAll(Colors.transparent) : null,
+        backgroundColor: !filled
+            ? WidgetStatePropertyAll(Colors.transparent)
+            : fillColor != null
+                ? WidgetStatePropertyAll(fillColor)
+                : WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
         side: !filled
             ? WidgetStatePropertyAll(
                 BorderSide(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+                  color: borderColor != null
+                      ? borderColor!
+                      : Theme.of(context).scaffoldBackgroundColor,
                 ),
               )
             : null,
@@ -40,6 +49,7 @@ class RButton extends StatelessWidget {
         label,
         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               color: filled ? Colors.white : null,
+              fontWeight: FontWeight.bold,
             ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_link_space/ui/widgets/custom_app_bar.dart';
 import 'package:my_link_space/ui/widgets/link_container.dart';
 import 'package:my_link_space/ui/widgets/r_circle_button.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 
 class PreviewView extends StatelessWidget {
   const PreviewView({super.key});
@@ -20,7 +21,7 @@ class PreviewView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
-        title: Text("Preview"),
+        title: Text(context.localizations.preview),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -72,7 +73,7 @@ class PreviewView extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Text(
-              "Thumbnail Preview",
+              context.localizations.thumbnailPreview,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -85,7 +86,7 @@ class PreviewView extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Text(
-              "Sample Links",
+              context.localizations.sampleLinks,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),

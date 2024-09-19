@@ -12,6 +12,7 @@ class AppTheme {
       secondaryContainer: secondaryContainerLightColor,
       tertiary: tertiaryLightColor,
       error: errorLightColor,
+      errorContainer: errorContainerLight,
       surface: surfaceLightColor,
     ),
     appBarTheme: const AppBarTheme(
@@ -21,7 +22,7 @@ class AppTheme {
     scaffoldBackgroundColor: scaffoldBackgroundLightColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     useMaterial3: true,
-    fontFamily: GoogleFonts.quicksand().fontFamily,
+    fontFamily: GoogleFonts.inter().fontFamily,
     textTheme: const TextTheme(
       bodySmall: TextStyle(
         fontSize: 12,
@@ -82,7 +83,7 @@ class AppTheme {
     scaffoldBackgroundColor: scaffoldBackgroundDarkColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     useMaterial3: true,
-    fontFamily: GoogleFonts.quicksand().fontFamily,
+    fontFamily: GoogleFonts.inter().fontFamily,
     textTheme: const TextTheme(
       bodySmall: TextStyle(
         fontSize: 12,
@@ -154,6 +155,7 @@ class AppTheme {
       secondaryContainer: secondaryContainerDarkColor,
       tertiary: tertiaryDarkColor,
       error: errorDarkColor,
+      errorContainer: errorContainerDark,
       surface: surfaceDarkColor,
     ),
   );
