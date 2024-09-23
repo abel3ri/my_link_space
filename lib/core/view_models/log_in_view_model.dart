@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 enum ViewState { idle, busy, error, success }
 
@@ -19,7 +19,7 @@ class LogInViewModel extends ChangeNotifier {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final FlutterSecureStorage storage = const FlutterSecureStorage();
+  final FlutterSecureStorage email = const FlutterSecureStorage();
 
   void _setState(ViewState state) {
     _state = state;
@@ -32,11 +32,11 @@ class LogInViewModel extends ChangeNotifier {
   }
 
   Future<void> storeToken(String token) async {
-    await storage.write(key: 'userToken', value: token);
+    await email.write(key: 'userToken', value: token);
   }
 
   Future<String?> getToken() async {
-    return await storage.read(key: 'userToken');
+    return await email.read(key: 'userToken');
   }
 
   Future<void> signin(BuildContext context) async {
