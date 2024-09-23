@@ -6,6 +6,7 @@ PreferredSize CustomAppBar({
   required BuildContext context,
   required Widget title,
   List<Widget>? actions,
+  bool showBottom = false,
 }) {
   return PreferredSize(
     preferredSize: Size.fromHeight(56),
@@ -21,6 +22,11 @@ PreferredSize CustomAppBar({
           icon: FaIcon(Icons.share),
         )
       ],
+      bottom: showBottom
+          ? PreferredSize(
+              preferredSize: Size.fromHeight(4),
+              child: LinearProgressIndicator())
+          : null,
     ),
   );
 }

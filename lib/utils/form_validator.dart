@@ -8,4 +8,10 @@ class FormValidator {
     }
     return null;
   }
+
+  static String? titleValidator(String? value) {
+    if (value!.isEmpty) return "Please provide a title";
+
+    return null;
+  }
 }
