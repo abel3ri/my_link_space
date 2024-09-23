@@ -20,14 +20,14 @@ class PreviewView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
-        title: Text("Preview"),
+        title: const Text("Preview"),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RCircleButton(
@@ -38,7 +38,7 @@ class PreviewView extends StatelessWidget {
                 ),
               ],
             ),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 36,
               backgroundImage: AssetImage("assets/asset_1.png"),
             ),
@@ -53,16 +53,16 @@ class PreviewView extends StatelessWidget {
                       ),
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.005),
-                Icon(Icons.verified_rounded, size: 16),
+                const Icon(Icons.verified_rounded, size: 16),
               ],
             ),
-            Text("@kuraz_tech"),
+            const Text("@kuraz_tech"),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             SizedBox(
               height: 32,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) =>
                     SizedBox(width: MediaQuery.of(context).size.width * 0.03),
@@ -78,7 +78,7 @@ class PreviewView extends StatelessWidget {
                   ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            LinkContainer(
+            const LinkContainer(
               fillColor: Colors.redAccent,
               icon: FontAwesomeIcons.twitch,
               label: "Join Me on Twitch!",
@@ -92,7 +92,7 @@ class PreviewView extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               separatorBuilder: (context, index) => SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
@@ -117,7 +117,7 @@ class PreviewView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-                FaIcon(FontAwesomeIcons.meteor),
+                const FaIcon(FontAwesomeIcons.meteor),
               ],
             ),
           ],

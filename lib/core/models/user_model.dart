@@ -1,8 +1,10 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 class UserModel {
   final String id;
-  final String username;
+  final String name;
   final String email;
   final String password;
   final String email_verified_at;
@@ -12,7 +14,7 @@ class UserModel {
   final String updated_at;
 
   UserModel({
-    required this.username,
+    required this.name,
     required this.email,
     required this.id,
     required this.password,
@@ -24,7 +26,7 @@ class UserModel {
   });
 
   UserModel copyWith({
-    String? username,
+    String? name,
     String? email,
     String? id,
     String? token,
@@ -36,7 +38,7 @@ class UserModel {
     String? updated_at,
   }) {
     return UserModel(
-      username: username ?? this.username,
+      name: name ?? this.name,
       email: email ?? this.email,
       id: id ?? this.id,
       password: password ?? this.password,
@@ -50,7 +52,7 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'username': username,
+      'name': name,
       'email': email,
       'id': id,
       'password': password,
@@ -64,7 +66,7 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      username: map['username'] as String,
+      name: map['name'] as String,
       email: map['email'] as String,
       id: map['id'] as String,
       password: map['password'] as String,
@@ -83,14 +85,14 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(username: $username, email: $email, id: $id, password: $password, email_verified_at: $email_verified_at, is_premium: $is_premium, max_links: $max_links, created_at: $created_at, updated_at: $updated_at)';
+    return 'UserModel(name: $name, email: $email, id: $id, password: $password, email_verified_at: $email_verified_at, is_premium: $is_premium, max_links: $max_links, created_at: $created_at, updated_at: $updated_at)';
   }
 
   @override
   bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
 
-    return other.username == username &&
+    return other.name == name &&
         other.email == email &&
         other.id == id &&
         other.password == password &&
@@ -103,7 +105,7 @@ class UserModel {
 
   @override
   int get hashCode {
-    return username.hashCode ^
+    return name.hashCode ^
         email.hashCode ^
         id.hashCode ^
         password.hashCode ^

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_link_space/core/view_models/home_view_model.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
+import 'package:my_link_space/ui/shared/components/fonts.dart';
 import 'package:my_link_space/ui/shared/widget/page_view.dart';
 import 'package:provider/provider.dart';
 
@@ -70,23 +69,32 @@ class RegisterNav extends StatelessWidget {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: GFButton(
-                  shape: GFButtonShape.pills,
-                  color: homeViewModel.pageController.hasClients
-                      ? getbtncolor(
-                          homeViewModel.pageController.page?.round() ?? 0)
-                      : kbutton1,
-                  fullWidthButton: true,
-                  highlightColor: const Color.fromARGB(255, 255, 255, 255),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: ElevatedButton(
                   onPressed: () {
                     context.go('/signup');
                   },
-                  text: "Sign Up",
-                  textStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 20),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      homeViewModel.pageController.hasClients
+                          ? getbtncolor(
+                              homeViewModel.pageController.page?.round() ?? 0)
+                          : kbutton1,
+                    ),
+                  ),
+                  child: const SizedBox(
+                    height: 50,
+                    width: 400,
+                    child: Center(
+                      child: Text(
+                        "Sign Up",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 20), // Assuming this is defined somewhere
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -129,11 +137,11 @@ class RegisterNav extends StatelessWidget {
 
   Color getbackcolor(int pageindex) {
     switch (pageindex) {
+      case 0:
+        return kbackground1;
       case 1:
         return kbackground2;
       case 2:
-        return kbackground3;
-      case 3:
         return kbackground3;
       default:
         return Colors.black;

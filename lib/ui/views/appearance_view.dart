@@ -24,10 +24,10 @@ class AppearanceView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
-        title: Text("Appearance"),
+        title: const Text("Appearance"),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(
           horizontal: 16,
           vertical: MediaQuery.of(context).size.height * 0.04,
@@ -35,7 +35,7 @@ class AppearanceView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RSubHeaderText(
+            const RSubHeaderText(
               text: "Profile",
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
@@ -81,7 +81,7 @@ class AppearanceView extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                  RSubContainer(
+                  const RSubContainer(
                     label: "Profile Title",
                     value: "@ktmobiledev",
                   ),
@@ -91,11 +91,11 @@ class AppearanceView extends StatelessWidget {
                     value: "Bio",
                     height: MediaQuery.of(context).size.height * 0.1,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerRight,
                     child: Text("0 / 80"),
                   ),
-                  Divider(thickness: .4),
+                  const Divider(thickness: .4),
                   RTextButton(
                     label: "Add social icons",
                     onPressed: () {},
@@ -109,7 +109,7 @@ class AppearanceView extends StatelessWidget {
               children: [
                 Container(
                   height: 360,
-                  padding: EdgeInsets.only(right: 16),
+                  padding: const EdgeInsets.only(right: 16),
                   decoration: BoxDecoration(
                     color:
                         Theme.of(context).colorScheme.primary.withOpacity(.1),
@@ -156,7 +156,7 @@ class AppearanceView extends StatelessWidget {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 ListView.separated(
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     return Row(
@@ -193,7 +193,7 @@ class AppearanceView extends StatelessWidget {
                                   itemCount: 4,
                                 ),
                                 SizedBox(height: constraints.maxHeight * 0.02),
-                                Spacer(),
+                                const Spacer(),
                                 FilledButton(
                                   onPressed: () {},
                                   style: ButtonStyle(
@@ -223,26 +223,27 @@ class AppearanceView extends StatelessWidget {
                   right: -5,
                   child: IconButton(
                     onPressed: () {},
-                    icon: FaIcon(FontAwesomeIcons.solidCircleXmark, size: 16),
+                    icon: const FaIcon(FontAwesomeIcons.solidCircleXmark,
+                        size: 16),
                   ),
                 )
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            RSubHeaderText(text: "Themes"),
+            const RSubHeaderText(text: "Themes"),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RContainer(
               child: GridView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   childAspectRatio: 1 / 1.5,
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 16,
                 ),
                 children: [
-                  ThemeLinkContainer(
+                  const ThemeLinkContainer(
                     themeName: "Dark",
                     color: Colors.black,
                     themeLinkMiniContainers: [
@@ -266,7 +267,7 @@ class AppearanceView extends StatelessWidget {
                     themeName: "Pebble Purple",
                     color:
                         Theme.of(context).colorScheme.primary.withOpacity(.5),
-                    themeLinkMiniContainers: [
+                    themeLinkMiniContainers: const [
                       ThemeLinkMiniContainer(
                         color: Colors.white,
                         height: 12,
@@ -286,7 +287,7 @@ class AppearanceView extends StatelessWidget {
                   ThemeLinkContainer(
                     themeName: "Pebble Blue",
                     color: Colors.blue.withOpacity(.5),
-                    themeLinkMiniContainers: [
+                    themeLinkMiniContainers: const [
                       ThemeLinkMiniContainer(
                         color: Colors.white,
                         height: 12,
@@ -307,7 +308,7 @@ class AppearanceView extends StatelessWidget {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            RSubHeaderText(text: "Fonts"),
+            const RSubHeaderText(text: "Fonts"),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RContainer(
               child: Column(
@@ -328,9 +329,9 @@ class AppearanceView extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          decoration: BoxDecoration(),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
+                          decoration: const BoxDecoration(),
                           child: Text(
                             "Aa",
                             style: Theme.of(context)
@@ -358,12 +359,12 @@ class AppearanceView extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  Text("#ffffff"),
+                  const Text("#ffffff"),
                 ],
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            RContainer(
+            const RContainer(
               child: Column(
                 children: [
                   Row(

@@ -20,7 +20,7 @@ class RButton extends StatelessWidget {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor:
-            !filled ? WidgetStatePropertyAll(Colors.transparent) : null,
+            !filled ? const WidgetStatePropertyAll(Colors.transparent) : null,
         side: !filled
             ? WidgetStatePropertyAll(
                 BorderSide(

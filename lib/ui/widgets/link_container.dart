@@ -16,7 +16,7 @@ class LinkContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: fillColor,
@@ -28,7 +28,7 @@ class LinkContainer extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.primary,
             child: FaIcon(icon),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             label,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -36,7 +36,7 @@ class LinkContainer extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

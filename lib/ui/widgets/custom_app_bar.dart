@@ -8,17 +8,17 @@ PreferredSize CustomAppBar({
   List<Widget>? actions,
 }) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(56),
+    preferredSize: const Size.fromHeight(56),
     child: AppBar(
       title: title,
       titleTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontWeight: FontWeight.bold,
           ),
       actions: [
-        UpgradeAction(),
+        const UpgradeAction(),
         IconButton(
           onPressed: () {},
-          icon: FaIcon(FontAwesomeIcons.shareNodes),
+          icon: const FaIcon(FontAwesomeIcons.shareNodes),
         )
       ],
     ),

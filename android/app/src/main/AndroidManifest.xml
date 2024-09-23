@@ -22,6 +22,8 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+        <meta-data android:name="com.facebook.sdk.448738778187556" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.bd582e19a3c8f1f43c82f195bb0bf649" android:value="@string/facebook_client_token"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

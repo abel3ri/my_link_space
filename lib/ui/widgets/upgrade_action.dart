@@ -11,7 +11,7 @@ class UpgradeAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: isDarkMode ? chipBackgroundDark : chipBackgroundLight,
         borderRadius: BorderRadius.circular(100),
@@ -25,7 +25,7 @@ class UpgradeAction extends StatelessWidget {
                 ),
           ),
           SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-          FaIcon(FontAwesomeIcons.bolt),
+          const FaIcon(FontAwesomeIcons.bolt),
         ],
       ),
     );

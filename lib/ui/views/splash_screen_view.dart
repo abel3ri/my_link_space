@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
@@ -14,17 +13,27 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<double> animation;
+  late Animation<Offset> animation;
 
   @override
   void initState() {
     super.initState();
     controller = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
-    animation = CurvedAnimation(parent: controller, curve: Curves.linear);
-    controller.repeat();
+
+    animation = Tween<Offset>(
+      begin: Offset(0, 0),
+      end: Offset(0, -0.2),
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.bounceInOut,
+      ),
+    );
+
+    controller.repeat(reverse: true);
     Future.delayed(const Duration(seconds: 5), () {
       context.go('/register');
     });
@@ -39,17 +48,14 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: kbackground1,
+      backgroundColor: kbackground1,
       body: Center(
         child: GestureDetector(
           onTap: () {
-            controller.repeat();
+            controller.repeat(reverse: true);
           },
-          child: GFAnimation(
-            turnsAnimation: animation,
-            controller: controller,
-            type: GFAnimationType.rotateTransition,
-            alignment: Alignment.center,
+          child: SlideTransition(
+            position: animation,
             child: SvgPicture.asset(
               'assets/images/token_spaces.svg',
               width: 80,

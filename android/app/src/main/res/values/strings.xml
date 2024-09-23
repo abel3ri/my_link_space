@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">my_link_space</string>
+    <string name="facebook_app_id">448738778187556</string>
+    <string name="fb_login_protocol_scheme">fb448738778187556</string>
+    <string name="facebook_client_token">bd582e19a3c8f1f43c82f195bb0bf649</string>
+</resources>

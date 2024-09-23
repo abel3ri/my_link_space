@@ -87,7 +87,7 @@ class CustomTextStyles {
   );
 
   static TextStyle L1 = GoogleFonts.inter(
-    fontWeight: FontWeight.w200,
+    fontWeight: FontWeight.w400,
     fontSize: 15.0,
     color: khint,
     letterSpacing: 0.1,

@@ -12,7 +12,7 @@ class RUpgradeButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         decoration: BoxDecoration(
           color: !isDarkMode ? Colors.black : Colors.white,
           borderRadius: BorderRadius.circular(4),
@@ -25,7 +25,7 @@ class RUpgradeButton extends StatelessWidget {
                     color: !isDarkMode ? Colors.white : Colors.black,
                   ),
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             FaIcon(
               FontAwesomeIcons.lock,
               size: 12,

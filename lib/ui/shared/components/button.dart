@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:my_link_space/core/models/services/authservice.dart';
+import 'package:my_link_space/core/view_models/email_verification_view_model.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';
-import 'package:my_link_space/ui/shared/components/icon_pack.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class MAterialBtn extends StatelessWidget {
   MAterialBtn(
@@ -20,7 +22,7 @@ class MAterialBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         width: width,
@@ -44,43 +46,127 @@ class MAterialBtn extends StatelessWidget {
   }
 }
 
-class Material2Btn extends StatelessWidget {
-  Material2Btn({
-    super.key,
-    required this.text,
-    required this.images,
-    required this.onTap,
-  });
-  final String text;
-  final String images;
-  VoidCallback onTap;
+class GoogleSignupPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Provider.of<GoogleSignupViewModel>(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Consumer<GoogleSignupViewModel>(
+        builder: (context, viewModel, child) {
+          return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (viewModel.isLoading)
+                  CircularProgressIndicator()
+                else ...[
+                  if (viewModel.message.isNotEmpty)
+                    Text(
+                      viewModel.message,
+                      style: TextStyle(
+                        color: viewModel.state == SignupState.error
+                            ? Colors.red
+                            : Colors.green,
+                        fontSize: 16,
+                      ),
+                    ),
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(kfield_back),
+                        textStyle: WidgetStateProperty.all(CustomTextStyles.D2),
+                      ),
+                      onPressed: () {
+                        viewModel.pickAccount();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Image.asset('assets/images/g.png'),
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Sign In with Google',
+                            style: CustomTextStyles.B2,
+                          ),
+                        ],
+                      ))
+                ]
+              ]);
+        },
+      ),
+    );
+  }
+}
+
+class FacebookSignupPage extends StatelessWidget {
+  const FacebookSignupPage({super.key});
+
+  Future<void> _handleFacebookSignIn(BuildContext context) async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login();
+
+      if (result.status == LoginStatus.success) {
+        final viewModel = Provider.of<AuthService>(context, listen: false);
+        //  viewModel.facebookSignUpOrLogin(accessToken.token);
+      } else if (result.status == LoginStatus.cancelled) {
+        print('Facebook Sign-In Cancelled');
+      } else {
+        print('Facebook Sign-In Error: ${result.message}');
+      }
+    } catch (error) {
+      print('Facebook Sign-In Error: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        width: 370,
-        height: 40,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(30.2)),
-          color: kfield_back,
-          border:
-              Border.all(color: kOnSecondaryColor, style: BorderStyle.solid),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(height: 50, width: 50, child: Image.asset(images)),
-            SizedBox(
-              width: 10,
+    final viewModel = Provider.of<AuthService>(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStateProperty.all(kfield_back),
+              textStyle: WidgetStateProperty.all(CustomTextStyles.D2),
             ),
-            Text(
-              text,
-              style: CustomTextStyles.D2,
+            onPressed: viewModel.state == FacebookState.loading
+                ? null
+                : () {
+                    _handleFacebookSignIn(context);
+                  },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Image.asset(
+                      'assets/images/facebook-icon-logo-205182.png'),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  'Sign In with Facebook',
+                  style: CustomTextStyles.B2,
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          if (viewModel.state == FacebookState.loading)
+            const CircularProgressIndicator(),
+          if (viewModel.state == FacebookState.success)
+            Text(viewModel.message,
+                style: const TextStyle(color: Colors.green)),
+          if (viewModel.state == FacebookState.error)
+            Text(viewModel.message, style: const TextStyle(color: Colors.red)),
+        ],
       ),
     );
   }

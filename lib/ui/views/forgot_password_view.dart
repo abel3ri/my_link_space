@@ -5,7 +5,6 @@ import 'package:my_link_space/ui/shared/components/button.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';
 import 'package:my_link_space/ui/shared/widget/form.dart';
-import 'package:my_link_space/ui/views/sign_up.dart';
 
 class ForgotPassword extends StatelessWidget {
   ForgotPassword({super.key});
@@ -53,6 +52,7 @@ class ForgotPassword extends StatelessWidget {
                 height: 40,
               ),
               CustomField(
+                onChanged: () {},
                 controller: controller,
                 hintText: 'email',
                 validator: (value) {
@@ -77,7 +77,7 @@ class ForgotPassword extends StatelessWidget {
                   colors: kbutton_finall1,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Center(

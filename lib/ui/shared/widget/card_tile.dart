@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/toggle/gf_toggle.dart';
 import 'package:getwidget/types/gf_toggle_type.dart';
-import 'package:my_link_space/ui/shared/components/button.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';
 
-class CardTile extends StatefulWidget {
-  const CardTile({super.key});
-
-  @override
-  State<CardTile> createState() => _CardTileState();
-}
-
-class _CardTileState extends State<CardTile> {
+class CardTile extends StatelessWidget {
+  CardTile({super.key});
   bool onChanged = true; // toggle state
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _urlController = TextEditingController();
@@ -64,18 +57,14 @@ class _CardTileState extends State<CardTile> {
                   Container(
                     height: 40,
                     width: 250,
-                    decoration: BoxDecoration(color: Colors.orange),
+                    decoration: const BoxDecoration(color: Colors.orange),
                     child: Text(
                       'Enter the URL of an album or song and we\'ll show your visitors everywhere they can listen to it',
                       style: CustomTextStyles.B12,
                     ),
                   ),
                   GFToggle(
-                    onChanged: (value) {
-                      setState(() {
-                        // onChanged = value;
-                      });
-                    },
+                    onChanged: (value) {},
                     value: onChanged,
                     type: GFToggleType.custom,
                   ),

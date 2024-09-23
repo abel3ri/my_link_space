@@ -1,21 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:my_link_space/ui/shared/components/colors.dart';
 
 class CustomField extends StatelessWidget {
   const CustomField({
-    super.key,
+    Key? key,
     required this.controller,
     required this.hintText,
     required this.validator,
     this.isobsecuretext = false,
     this.sfx_icon = const Icon(Icons.visibility_outlined),
-  });
+    required this.onChanged,
+  }) : super(key: key);
   final TextEditingController controller;
   final String hintText;
   final String? Function(String?)? validator;
   final bool isobsecuretext;
   final Widget sfx_icon;
+  final Function onChanged;
   @override
   Widget build(BuildContext context) {
     return Padding(

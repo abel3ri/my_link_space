@@ -18,13 +18,17 @@ class ThemeLinkContainer extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               color: color,
             ),
             child: Column(
-              children: [Spacer(), ...themeLinkMiniContainers, Spacer()],
+              children: [
+                const Spacer(),
+                ...themeLinkMiniContainers,
+                const Spacer()
+              ],
             ),
           ),
         ),

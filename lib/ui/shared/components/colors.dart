@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 const Color kbackground1 = Color.fromARGB(255, 0, 0, 0);
@@ -31,7 +29,7 @@ const Color textFieldFillColorLight = Colors.white;
 
 const Color textFieldFillColorDark = Color.fromARGB(255, 73, 73, 73);
 const chipBackgroundDark = Color.fromARGB(255, 64, 64, 64);
-const Color cardDarkBackgroundColor = const Color(0xFF2D2D2D);
+const Color cardDarkBackgroundColor = Color(0xFF2D2D2D);
 const Color primaryDarkColor = Color(0xff9b5fe0);
 const Color appBarBackgroundDarkColor = Color(0xFF1E1E1E);
 const Color scaffoldBackgroundDarkColor = Color(0xFF1E1E1E);
