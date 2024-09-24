@@ -23,6 +23,7 @@ class LinkViewModel with ChangeNotifier {
       _links = List<LinkModel>.from(res.data.map((link) {
         return LinkModel.fromJson(link);
       }));
+
       return (right(SuccessModel(body: "Fetched all links")));
     } on DioException catch (e) {
       if (e.response != null) {
@@ -75,6 +76,7 @@ class LinkViewModel with ChangeNotifier {
   }) async {
     try {
       link.isActive = switchState;
+      notifyListeners();
       await dio.put("/${link.userId}/links/${link.id}", data: {
         "is_active": switchState ? 1 : 0,
       });
@@ -93,6 +95,30 @@ class LinkViewModel with ChangeNotifier {
       return left(ErrorModel(body: "Connection problem"));
     } catch (e) {
       link.isActive = !switchState;
+      return left(ErrorModel(body: e.toString()));
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<Either<ErrorModel, SuccessModel>> updateLinkCount({
+    required int userId,
+    required int linkId,
+  }) async {
+    try {
+      await dio.post("/${userId}/links/${linkId}/click");
+      return right(SuccessModel(body: "Successfuly updated click count"));
+    } on DioException catch (e) {
+      if (e.response != null) {
+        if (e.response!.statusCode == 404) {
+          return left(ErrorModel(body: "Page not found!"));
+        }
+        return left(ErrorModel(body: e.response!.data));
+      }
+
+      return left(ErrorModel(body: "Connection problem"));
+    } catch (e) {
       return left(ErrorModel(body: e.toString()));
     } finally {
       _isLoading = false;
@@ -127,6 +153,10 @@ class LinkViewModel with ChangeNotifier {
     }
     final item = _links.removeAt(oldIndex);
     _links.insert(newIndex, item);
+    notifyListeners();
+  }
+
+  void update() {
     notifyListeners();
   }
 
