@@ -68,5 +68,13 @@
   "yesDeleteMyAccountBtn": "YES, Delete My Account",
   "addNewLink": "Add New Link",
   "enterUrl": "Enter URL",
-  "url": "URL"
+  "url": "URL",
+  "title": "Title",
+  "joinPros": "Join the PROs to unlock this feature and tons of amazing others",
+  "getAccessToPowerful": "Get access to powerful analytics and insights",
+  "customizeYourMy": "Customize your MyLinkSpace and remove logo",
+  "playVideos": "Play videos and capture emails directly on your linktree",
+  "plusMuchMuchMore": "Plus much, mush more!",
+  "noThanks": "No thanks, maybe later",
+  "yourPerformance": "Your Performance"
 }
