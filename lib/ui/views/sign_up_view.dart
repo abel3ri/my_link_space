@@ -6,11 +6,8 @@ import 'package:my_link_space/core/view_models/sign_upvm.dart';
 import 'package:my_link_space/ui/shared/components/button.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';
-import 'package:my_link_space/ui/shared/components/icon_pack.dart';
 import 'package:my_link_space/ui/shared/widget/form.dart';
-import 'package:my_link_space/ui/shared/widget/loading.dart';
 import 'package:provider/provider.dart';
-import 'package:redacted/redacted.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -23,13 +20,15 @@ class SignUp extends StatelessWidget {
         builder: (context, signUpVm, child) {
           if (signUpVm.isLoading) {
             return Center(
-                child: Loading().redacted(
-              context: context,
-              redact: true,
-              configuration: RedactedConfiguration(
-                animationDuration: const Duration(milliseconds: 800),
-              ),
-            ));
+              child: AlertDialog(
+                  backgroundColor: kbutton_finall1,
+                  title: Center(
+                    child: Text(
+                      'Please wait',
+                      style: CustomTextStyles.B1,
+                    ),
+                  )),
+            );
           } else if (signUpVm.isSuccess) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context).showMaterialBanner(MaterialBanner(
@@ -37,14 +36,14 @@ class SignUp extends StatelessWidget {
                     'Congra! Registerd successfully',
                     style: CustomTextStyles.B2,
                   ),
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   shadowColor: Colors.greenAccent,
                   backgroundColor: kfield_back,
                   actions: <Widget>[
                     TextButton(
                         onPressed: ScaffoldMessenger.of(context)
                             .hideCurrentMaterialBanner,
-                        child: Icon(FontAwesomeIcons.rightLeft))
+                        child: const Icon(FontAwesomeIcons.close))
                   ]));
               context.go('/login');
             });
@@ -81,7 +80,7 @@ class SignUp extends StatelessWidget {
         const SizedBox(height: 40),
         Padding(
           padding: const EdgeInsets.only(left: 10.0),
-          child: Text('Join MyLinkSpace', style: CustomTextStyles.D1),
+          child: Text('Join MyLinkSpace 🎉', style: CustomTextStyles.D1),
         ),
         const SizedBox(height: 10),
         Padding(
@@ -162,7 +161,6 @@ class SignUp extends StatelessWidget {
                 await signUpVm.register();
 
                 if (signUpVm.isSuccess) {
-                  // This will be handled in the Consumer builder above
                 } else if (signUpVm.emailInUse) {
                   ScaffoldMessenger.of(context)
                       .showMaterialBanner(MaterialBanner(
@@ -170,14 +168,14 @@ class SignUp extends StatelessWidget {
                             'Email is already in use',
                             style: CustomTextStyles.B2,
                           ),
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           shadowColor: const Color.fromARGB(255, 230, 10, 10),
                           backgroundColor: kfield_back,
                           actions: <Widget>[
                         TextButton(
                             onPressed: ScaffoldMessenger.of(context)
                                 .hideCurrentMaterialBanner,
-                            child: Icon(FontAwesomeIcons.close))
+                            child: const Icon(FontAwesomeIcons.close))
                       ]));
                 } else {
                   ScaffoldMessenger.of(context)
@@ -186,14 +184,14 @@ class SignUp extends StatelessWidget {
                             'Email is already in use',
                             style: CustomTextStyles.B2,
                           ),
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           shadowColor: const Color.fromARGB(255, 230, 10, 10),
                           backgroundColor: kfield_back,
                           actions: <Widget>[
                         TextButton(
                             onPressed: ScaffoldMessenger.of(context)
                                 .hideCurrentMaterialBanner,
-                            child: Icon(FontAwesomeIcons.close))
+                            child: const Icon(FontAwesomeIcons.close))
                       ]));
                 }
               }
@@ -204,11 +202,46 @@ class SignUp extends StatelessWidget {
             height: 55,
           ),
         ),
+        const SizedBox(
+          height: 30,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 25.0),
+          child: RichText(
+            text: TextSpan(
+              text: 'By clicking ',
+              style: CustomTextStyles.B12,
+              children: [
+                TextSpan(
+                  text: 'Create account',
+                  style: CustomTextStyles.B12.copyWith(
+                    color: const Color.fromARGB(255, 18, 19, 20),
+                  ),
+                ),
+                TextSpan(
+                  text: ' ,you agree to MyLinkSpace\'s ',
+                  style: CustomTextStyles.B12,
+                ),
+                TextSpan(
+                  text: ' privacy  notice , T&Cs',
+                  style: CustomTextStyles.B12.copyWith(
+                    decoration: TextDecoration.underline,
+                    color: const Color.fromARGB(255, 80, 164, 232),
+                  ),
+                ),
+                TextSpan(
+                  text: ' and to recievw offers, news and updates',
+                  style: CustomTextStyles.B12,
+                ),
+              ],
+            ),
+          ),
+        ),
         const SizedBox(height: 20),
         Center(
           child: Text('OR', style: CustomTextStyles.B12),
         ),
-        const SizedBox(height: 20),
+        // const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.only(left: 15.0),
           child: Column(
@@ -227,7 +260,7 @@ class SignUp extends StatelessWidget {
                     style: CustomTextStyles.B12,
                     children: [
                       TextSpan(
-                        text: 'Sign in',
+                        text: 'sign in',
                         style: CustomTextStyles.B12.copyWith(
                           color: kbutton_finall1,
                         ),

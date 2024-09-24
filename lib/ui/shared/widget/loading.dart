@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_link_space/ui/shared/components/colors.dart';
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -33,6 +34,7 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin {
     return Center(
       child: CircularProgressIndicator(
         value: animation.value,
+        color: kbutton_finall1,
       ),
     );
   }

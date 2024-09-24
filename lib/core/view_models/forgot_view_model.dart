@@ -6,7 +6,7 @@ class ForgotPasswordViewModel extends ChangeNotifier {
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
-
+  String email = '';
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
 
@@ -50,5 +50,10 @@ class ForgotPasswordViewModel extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  void setemail(value) {
+    email = value;
+    notifyListeners();
   }
 }

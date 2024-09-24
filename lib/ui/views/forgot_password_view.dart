@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_link_space/core/view_models/reset_view_model.dart';
-import 'package:my_link_space/ui/shared/components/button.dart';
+import 'package:my_link_space/core/view_models/forgot_view_model.dart';
 import 'package:my_link_space/ui/shared/components/colors.dart';
 import 'package:my_link_space/ui/shared/components/fonts.dart';
 import 'package:my_link_space/ui/shared/widget/form.dart';
-import 'package:flutter/material.dart';
-import 'package:my_link_space/ui/shared/widget/loading.dart';
-import 'package:my_link_space/ui/views/verifycode_view.dart';
+import 'package:my_link_space/ui/views/Reset_password_page.dart';
 import 'package:provider/provider.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -61,7 +57,7 @@ class ForgotPassword extends StatelessWidget {
                   height: 40,
                 ),
                 CustomField(
-                  onChanged: () {},
+                  onChanged: forgotPVm.setemail,
                   controller: emailController,
                   hintText: 'email',
                   validator: (value) {
@@ -75,51 +71,64 @@ class ForgotPassword extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 forgotPVm.isLoading
-                    ? const Loading()
-                    : ElevatedButton(
-                        onPressed: () async {
-                          final email = emailController.text;
-                          if (email.isNotEmpty) {
-                            await forgotPVm.requestPasswordReset(email);
-                            if (forgotPVm.errorMessage != null) {
-                              ScaffoldMessenger.of(context).showMaterialBanner(
-                                  MaterialBanner(
-                                      content: Text(
-                                        'Email is already in use',
-                                        style: CustomTextStyles.B2,
-                                      ),
-                                      padding: const EdgeInsets.all(20),
-                                      shadowColor: const Color.fromARGB(
-                                          255, 230, 10, 10),
-                                      backgroundColor: kfield_back,
-                                      actions: <Widget>[
-                                    TextButton(
-                                        onPressed: ScaffoldMessenger.of(context)
-                                            .hideCurrentMaterialBanner,
-                                        child:
-                                            const Icon(FontAwesomeIcons.close))
-                                  ]));
-                            } else {
-                              // Navigate to the verify code page
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => VerifyCodePage(email: email),
-                                ),
-                              );
+                    ? Center(
+                        child: AlertDialog(
+                            backgroundColor: kbutton_finall1,
+                            title: Center(
+                              child: Text(
+                                'Please wait',
+                                style: CustomTextStyles.B1,
+                              ),
+                            )),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 18.0),
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(kbutton_finall1),
+                          ),
+                          onPressed: () async {
+                            final email = emailController.text;
+                            if (email.isNotEmpty) {
+                              await forgotPVm.requestPasswordReset(email);
+                              if (forgotPVm.errorMessage != null) {
+                                ScaffoldMessenger.of(context)
+                                    .showMaterialBanner(MaterialBanner(
+                                        content: Text(
+                                          (forgotPVm.errorMessage!),
+                                          style: CustomTextStyles.B2,
+                                        ),
+                                        padding: EdgeInsets.all(20),
+                                        shadowColor: const Color.fromARGB(
+                                            255, 230, 10, 10),
+                                        backgroundColor: kfield_back,
+                                        actions: <Widget>[
+                                      TextButton(
+                                          onPressed:
+                                              ScaffoldMessenger.of(context)
+                                                  .hideCurrentMaterialBanner,
+                                          child: Icon(FontAwesomeIcons.close))
+                                    ]));
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => ResetPasswordPage(),
+                                  ),
+                                );
+                              }
                             }
-                          }
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 15.0),
-                          child: MAterialBtn(
-                            width: 370,
-                            height: 55,
-                            onTap: () {
-                              context.go('/login');
-                            },
-                            ttile: 'Reset Password',
-                            colors: kbutton_finall1,
+                          },
+                          child: SizedBox(
+                            height: 50,
+                            width: 320,
+                            child: Center(
+                              child: Text(
+                                'Send Reset Code',
+                                style: CustomTextStyles.B1,
+                              ),
+                            ),
                           ),
                         ),
                       ),

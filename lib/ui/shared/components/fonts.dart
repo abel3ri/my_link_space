@@ -69,7 +69,7 @@ class CustomTextStyles {
   );
   static TextStyle B12 = GoogleFonts.inter(
     fontWeight: FontWeight.w600,
-    fontSize: 15.0,
+    fontSize: 17.0,
     color: const Color.fromARGB(255, 181, 175, 175),
     letterSpacing: 0.1,
   );

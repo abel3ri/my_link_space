@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:my_link_space/ui/email%20verfication/auth_service.dart';
 import 'package:flutter/material.dart';

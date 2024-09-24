@@ -53,7 +53,7 @@ class AuthService extends ChangeNotifier {
     try {
       // Call your API with the token
       final response = await http.post(
-        Uri.parse('https://192.168.1.108:8000/api/auth/facebook-signup'),
+        Uri.parse('http://192.168.1.108:8000/api/auth/facebook-signup'),
         headers: {
           'Authorization': 'Bearer $token',
         },

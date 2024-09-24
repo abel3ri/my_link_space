@@ -23,7 +23,7 @@ class GoogleSignupViewModel extends ChangeNotifier {
 
     try {
       final response = await http.post(
-        Uri.parse('https://192.168.1.108/auth/google-signup'),
+        Uri.parse('http://192.168.1.108/auth/google-signup'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'email': email}),
       );

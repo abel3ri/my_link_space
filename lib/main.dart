@@ -4,31 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:my_link_space/core/models/google_auth_model.dart';
 import 'package:my_link_space/core/models/services/authservice.dart';
 import 'package:my_link_space/core/view_models/email_verification_view_model.dart';
-
 import 'package:my_link_space/core/view_models/home_view_model.dart';
 import 'package:my_link_space/core/view_models/log_in_view_model.dart';
-import 'package:my_link_space/core/view_models/service_view_model.dart';
+import 'package:my_link_space/core/view_models/forgot_view_model.dart';
+import 'package:my_link_space/core/view_models/reset_password_view_model.dart';
 import 'package:my_link_space/core/view_models/sign_upvm.dart';
+import 'package:my_link_space/core/view_models/verifycode_view_model.dart';
 import 'package:my_link_space/ui/shared/components/theme.dart';
 import 'package:my_link_space/ui/shared/router/app_router.dart';
 import 'package:provider/provider.dart';
 
 void main(List<String> args) async {
-  HttpOverrides.global =
-      MyHttpOverrides(); // Add this line to disable SSL verification
-
+  HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HomeViewModel()),
-        ChangeNotifierProvider(create: (context) => AuthViewModel()),
         ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => GoogleSignupViewModel()),
         ChangeNotifierProvider(create: (context) => LogInViewModel()),
         ChangeNotifierProvider(create: (context) => GoogleSignInModel()),
         ChangeNotifierProvider(create: (context) => SignUpvm()),
+        ChangeNotifierProvider(create: (context) => ForgotPasswordViewModel()),
+        ChangeNotifierProvider(create: (context) => VerifyCodeViewModel()),
+        ChangeNotifierProvider(create: (context) => ResetPasswordViewModel()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
