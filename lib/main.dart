@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_link_space/core/view_models/home_view_model.dart';
+import 'package:my_link_space/core/view_models/link_view_model.dart';
 import 'package:my_link_space/core/view_models/locale_view_model.dart';
+import 'package:my_link_space/core/view_models/profile_theme_view_model.dart';
 import 'package:my_link_space/core/view_models/theme_view_model.dart';
 import 'package:my_link_space/l10n/l10n.dart';
 import 'package:my_link_space/ui/shared/components/theme.dart';
@@ -26,6 +28,8 @@ void main(List<String> args) async {
         ChangeNotifierProvider(
           create: (context) => LocaleViewModel(prefs: prefs),
         ),
+        ChangeNotifierProvider(create: (context) => LinkViewModel()),
+        ChangeNotifierProvider(create: (context) => ProfileThemeViewModel()),
       ],
       child: Builder(
         builder: (context) {
