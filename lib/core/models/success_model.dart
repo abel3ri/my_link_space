@@ -8,7 +8,7 @@ class SuccessModel {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Theme.of(context).colorScheme.error,
+        backgroundColor: Colors.green,
         content: Text(
           body,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
