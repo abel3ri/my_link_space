@@ -1,18 +1,46 @@
+import 'package:chapa_unofficial/chapa_unofficial.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_link_space/core/models/error_model.dart';
 import 'package:my_link_space/ui/widgets/r_button.dart';
+import 'package:my_link_space/utils/context_extension.dart';
 
 class UpgradeView extends StatelessWidget {
   const UpgradeView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Future<void> pay() async {
+      try {
+        Chapa.configure(
+            privateKey: "CHASECK_TEST-pxglKFxPWvXXWXGDF5isQMt4v4lhPOsK");
+
+        String txRef = TxRefRandomGenerator.generate(prefix: 'test');
+
+        await Chapa.getInstance.startPayment(
+          context: context,
+          onInAppPaymentSuccess: (successMsg) {},
+          onInAppPaymentError: (errorMsg) {
+            print(errorMsg);
+          },
+          amount: '300',
+          currency: 'ETB',
+          txRef: txRef,
+          firstName: "Kuraz",
+          lastName: "Tech",
+          phoneNumber: "0900000000",
+        );
+      } catch (e) {
+        print(e.toString());
+      }
+    }
+
     final List<String> adItems = [
-      "Get access to powerful analytics and insights",
-      "Customize your MyLinkSpace and remove logo",
-      "Play videos and capture emails directly on your linktree",
-      "Plus much, mush more!",
+      context.localizations.getAccessToPowerful,
+      context.localizations.customizeYourMy,
+      context.localizations.playVideos,
+      context.localizations.plusMuchMuchMore,
     ];
     return Scaffold(
       appBar: PreferredSize(
@@ -52,7 +80,7 @@ class UpgradeView extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Join the PROs to unlock this feature and tons of amazing others",
+              context.localizations.joinPros,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleLarge,
             ),
@@ -91,11 +119,22 @@ class UpgradeView extends StatelessWidget {
               itemCount: 4,
             ),
             Spacer(),
-            RButton(label: "Upgrade now", onPressed: () {}),
+            RButton(
+              label: context.localizations.upgrade,
+              onPressed: () async {
+                try {
+                  await pay();
+                } catch (e) {
+                  ErrorModel(body: e.toString()).showError(context);
+                }
+              },
+            ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             RButton(
-              label: "No thanks, maybe later",
-              onPressed: () {},
+              label: context.localizations.noThanks,
+              onPressed: () {
+                GoRouter.of(context).pop();
+              },
               filled: false,
             ),
           ],

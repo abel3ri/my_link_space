@@ -46,46 +46,47 @@ class AddNewLinkView extends StatelessWidget {
                     validator: FormValidator.titleValidator,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: RTextField(
-                          controller: addNewLinkViewModel.urlController,
-                          hintText: context.localizations.url,
-                          keyboardType: TextInputType.url,
-                          textInputAction: TextInputAction.done,
-                          validator: FormValidator.urlValidator,
-                        ),
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      RCircleButton(
-                        onPressed: () async {
-                          if (addNewLinkViewModel.formKey.currentState!
-                              .validate()) {
-                            final LinkModel link = LinkModel(
-                              title: addNewLinkViewModel.titleController.text,
-                              url: addNewLinkViewModel.urlController.text,
-                              userId: 1,
-                              clickCount: 0,
-                              isActive: true,
-                              createdAt: DateTime.now(),
-                              updatedAt: DateTime.now(),
-                            );
+                  RTextField(
+                    controller: addNewLinkViewModel.urlController,
+                    hintText: context.localizations.url,
+                    keyboardType: TextInputType.url,
+                    textInputAction: TextInputAction.done,
+                    validator: FormValidator.urlValidator,
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  Center(
+                    child: FilledButton(
+                      child: linkViewModel.isLoading
+                          ? SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: CircularProgressIndicator(),
+                            )
+                          : Text("Create"),
+                      onPressed: () async {
+                        if (addNewLinkViewModel.formKey.currentState!
+                            .validate()) {
+                          final LinkModel link = LinkModel(
+                            title: addNewLinkViewModel.titleController.text,
+                            url: addNewLinkViewModel.urlController.text,
+                            userId: 1,
+                            clickCount: 0,
+                            isActive: true,
+                            createdAt: DateTime.now(),
+                            updatedAt: DateTime.now(),
+                          );
 
-                            final res = await linkViewModel.createLink(
-                              linkModel: link,
-                            );
-                            res.fold((l) {
-                              l.showError(context);
-                            }, (r) {
-                              r.showSuccess(context);
-                              GoRouter.of(context).pop();
-                            });
-                          }
-                        },
-                        icon: FontAwesomeIcons.arrowRight,
-                      ),
-                    ],
+                          final res = await linkViewModel.createLink(
+                            linkModel: link,
+                          );
+                          res.fold((l) {
+                            l.showError(context);
+                          }, (r) {
+                            GoRouter.of(context).pop();
+                          });
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),

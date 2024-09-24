@@ -9,11 +9,13 @@ import 'package:my_link_space/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class LinksView extends StatelessWidget {
-  const LinksView({super.key});
+  LinksView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final linkViewModel = Provider.of<LinkViewModel>(context);
+    final scrollController = ScrollController();
+
     return Scaffold(
       appBar: CustomAppBar(
         context: context,
@@ -21,78 +23,80 @@ class LinksView extends StatelessWidget {
         showBottom: linkViewModel.isLoading,
       ),
       body: RefreshIndicator(
-        onRefresh: () => linkViewModel.getAllLinks(userId: 1),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(
-              parent: BouncingScrollPhysics(),
-            ),
-            padding: EdgeInsets.only(left: 12, right: 12, top: 24, bottom: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-                  child: RButton(
-                    label: context.localizations.addNewLink,
-                    onPressed: () {
-                      GoRouter.of(context).pushNamed("addNewLink");
-                    },
-                  ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                if (linkViewModel.links.isEmpty) ...[
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.3),
-                  Center(
-                    child: Text(
-                      "You don't have any links yet.",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                  Center(
-                    child: Text(
-                      "Try adding one!",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                ],
-                if (linkViewModel.links.isNotEmpty)
-                  ReorderableListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final link = linkViewModel.links[index];
-                      return MainLinkContainer(
-                        key: ValueKey("$index"),
-                        index: index,
-                        title: link.title,
-                        url: link.url,
-                        isActive: link.isActive,
-                        onSwitchToggle: (value) async {
-                          final res = await linkViewModel.updateLinkActiveState(
-                            link: link,
-                            switchState: value,
-                          );
-                          res.fold((l) {
-                            l.showError(context);
-                          }, (r) {
-                            r.showSuccess(context);
-                          });
-                        },
-                        subTitleIcons: [
-                          FontAwesomeIcons.image,
-                          FontAwesomeIcons.headphones,
-                          FontAwesomeIcons.lock,
-                        ],
-                      );
-                    },
-                    itemCount: linkViewModel.links.length,
-                    onReorder: linkViewModel.onReorder,
-                  ),
-              ],
-            ),
+        onRefresh: () async {
+          final res = await linkViewModel.getAllLinks(userId: 1);
+          res.fold((l) {
+            l.showError(context);
+          }, (r) {});
+        },
+        child: ListView(
+          controller: scrollController,
+          physics: const AlwaysScrollableScrollPhysics(
+            parent: BouncingScrollPhysics(),
           ),
+          padding:
+              const EdgeInsets.only(left: 12, right: 12, top: 24, bottom: 8),
+          children: [
+            Center(
+              child: RButton(
+                label: context.localizations.addNewLink,
+                onPressed: () {
+                  GoRouter.of(context).pushNamed("addNewLink");
+                },
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            if (linkViewModel.links.isEmpty) ...[
+              SizedBox(height: MediaQuery.of(context).size.height * 0.3),
+              Center(
+                child: Text(
+                  "You don't have any links yet.",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              Center(
+                child: Text(
+                  "Try adding one!",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+            ],
+            if (linkViewModel.links.isNotEmpty)
+              ReorderableListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final link = linkViewModel.links[index];
+
+                  return MainLinkContainer(
+                    key: ValueKey("$index"),
+                    index: index,
+                    title: link.title,
+                    url: link.url,
+                    isActive: link.isActive,
+                    onSwitchToggle: (value) async {
+                      final res = await linkViewModel.updateLinkActiveState(
+                        link: link,
+                        switchState: value,
+                      );
+                      res.fold((l) {
+                        l.showError(context);
+                      }, (r) {
+                        r.showSuccess(context);
+                      });
+                    },
+                    subTitleIcons: const [
+                      FontAwesomeIcons.image,
+                      FontAwesomeIcons.headphones,
+                      FontAwesomeIcons.lock,
+                    ],
+                  );
+                },
+                itemCount: linkViewModel.links.length,
+                onReorder: linkViewModel.onReorder,
+              ),
+          ],
         ),
       ),
     );

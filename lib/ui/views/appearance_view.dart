@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_link_space/core/view_models/image_picker_view_model.dart';
+import 'package:my_link_space/core/view_models/profile_theme_view_model.dart';
 import 'package:my_link_space/ui/widgets/custom_app_bar.dart';
 import 'package:my_link_space/ui/widgets/r_button.dart';
 import 'package:my_link_space/ui/widgets/r_container.dart';
@@ -16,6 +17,7 @@ import 'package:my_link_space/ui/widgets/r_upgrade_button.dart';
 import 'package:my_link_space/ui/widgets/theme_link_container.dart';
 import 'package:my_link_space/ui/widgets/theme_link_mini_container.dart';
 import 'package:my_link_space/utils/context_extension.dart';
+import 'package:my_link_space/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class AppearanceView extends StatelessWidget {
@@ -23,6 +25,8 @@ class AppearanceView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileThemeViewModel = Provider.of<ProfileThemeViewModel>(context);
+
     final List<String> adItems = [
       context.localizations.hideMyLinkSpaceLogo,
       context.localizations.trackPerformance,
@@ -132,7 +136,7 @@ class AppearanceView extends StatelessWidget {
                                 ),
                                 RButton(
                                   label: context.localizations.cancel,
-                                  onPressed: () {
+                                  onPressed: () async {
                                     imagePickerViewModel.clearImage();
                                   },
                                   height: 38,
@@ -314,81 +318,110 @@ class AppearanceView extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               RSubHeaderText(text: context.localizations.themes),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              RContainer(
-                child: GridView(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 1 / 1.5,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 16,
-                  ),
-                  children: [
-                    ThemeLinkContainer(
-                      themeName: "Dark",
-                      color: Colors.black,
-                      themeLinkMiniContainers: [
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
+              profileThemeViewModel.themes.isEmpty
+                  ? RContainer(
+                      child: Center(
+                        child: Text(
+                          "No themes to choose from. Default Theme will be Applied",
+                          textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 8),
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
+                      ),
+                    )
+                  : RContainer(
+                      child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 1 / 1.5,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 16,
                         ),
-                        SizedBox(height: 8),
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                      ],
+                        itemCount: profileThemeViewModel.themes.length,
+                        itemBuilder: (context, index) {
+                          final theme = profileThemeViewModel.themes[index];
+                          print(theme.buttonColor);
+                          return ThemeLinkContainer(
+                            color: Color(colorParser(theme.backgroundValue!))
+                                .withOpacity(.5),
+                            themeLinkMiniContainers: List.generate(3, (index) {
+                              return ThemeLinkMiniContainer(
+                                height: 12,
+                                color: Color(
+                                  colorParser(theme.buttonColor!),
+                                ),
+                              );
+                            }),
+                            themeName:
+                                profileThemeViewModel.themes[index].name ??
+                                    "Theme",
+                          );
+                        },
+                        // children: [
+                        // // ThemeLinkContainer(
+                        // //   themeName: "Dark",
+                        // //   color: Colors.black,
+                        // //   themeLinkMiniContainers: [
+                        // //     ThemeLinkMiniContainer(
+                        // //       color: Colors.white,
+                        // //       height: 12,
+                        // //     ),
+                        // //     SizedBox(height: 8),
+                        // //     ThemeLinkMiniContainer(
+                        // //       color: Colors.white,
+                        // //       height: 12,
+                        // //     ),
+                        // //     SizedBox(height: 8),
+                        // //     ThemeLinkMiniContainer(
+                        // //       color: Colors.white,
+                        // //       height: 12,
+                        // //     ),
+                        // //   ],
+                        // // ),
+                        // ThemeLinkContainer(
+                        //   themeName: "Pebble Purple",
+                        //   color:
+                        //       Theme.of(context).colorScheme.primary.withOpacity(.5),
+                        //   themeLinkMiniContainers: [
+                        //     ThemeLinkMiniContainer(
+                        //       color: Colors.white,
+                        //       height: 12,
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     ThemeLinkMiniContainer(
+                        //       color: Colors.white,
+                        //       height: 12,
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     ThemeLinkMiniContainer(
+                        //       color: Colors.white,
+                        //       height: 12,
+                        //     ),
+                        //   ],
+                        // ),
+                        // ThemeLinkContainer(
+                        //   themeName: "Pebble Blue",
+                        //   color: Colors.blue.withOpacity(.5),
+                        //   themeLinkMiniContainers: [
+                        //     ThemeLinkMiniContainer(
+                        //       color: Colors.white,
+                        //       height: 12,
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     ThemeLinkMiniContainer(
+                        //       color: Colors.white,
+                        //       height: 12,
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     ThemeLinkMiniContainer(
+                        //       color: Colors.white,
+                        //       height: 12,
+                        //     ),
+                        //   ],
+                        // ),
+                        // ],
+                      ),
                     ),
-                    ThemeLinkContainer(
-                      themeName: "Pebble Purple",
-                      color:
-                          Theme.of(context).colorScheme.primary.withOpacity(.5),
-                      themeLinkMiniContainers: [
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                        SizedBox(height: 8),
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                        SizedBox(height: 8),
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                      ],
-                    ),
-                    ThemeLinkContainer(
-                      themeName: "Pebble Blue",
-                      color: Colors.blue.withOpacity(.5),
-                      themeLinkMiniContainers: [
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                        SizedBox(height: 8),
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                        SizedBox(height: 8),
-                        ThemeLinkMiniContainer(
-                          color: Colors.white,
-                          height: 12,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               RSubHeaderText(text: context.localizations.fonts),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
