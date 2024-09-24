@@ -35,8 +35,20 @@ class RTextField extends StatelessWidget {
         ),
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            // color: Colors.grey.shade500,
+              color: Colors.grey.shade600,
             ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.error,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.error,
+          ),
+        ),
       ),
       textInputAction: textInputAction,
       keyboardType: keyboardType,

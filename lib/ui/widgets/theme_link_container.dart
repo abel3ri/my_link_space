@@ -22,6 +22,9 @@ class ThemeLinkContainer extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               color: color,
+              border: Border.all(
+                width: .5,
+              ),
             ),
             child: Column(
               children: [Spacer(), ...themeLinkMiniContainers, Spacer()],

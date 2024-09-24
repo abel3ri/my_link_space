@@ -27,7 +27,13 @@ class MainLinkContainer extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       margin: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: isDarkMode ? cardDarkBackgroundColor : cardLightBackgroundColor,
+        color: isDarkMode
+            ? isActive
+                ? cardDarkBackgroundColor
+                : const Color.fromARGB(255, 94, 94, 94)
+            : isActive
+                ? cardLightBackgroundColor
+                : const Color.fromARGB(255, 198, 198, 198),
         borderRadius: BorderRadius.circular(24),
       ),
       child: ListTile(
@@ -80,7 +86,7 @@ class MainLinkContainer extends StatelessWidget {
         trailing: Transform.scale(
           scale: .8,
           child: Switch(
-            value: true,
+            value: isActive,
             onChanged: onSwitchToggle,
           ),
         ),
