@@ -5,6 +5,7 @@ import 'package:my_link_space/ui/views/links_veiw.dart';
 import 'package:my_link_space/ui/views/log_in_view.dart';
 import 'package:my_link_space/ui/views/not_found_view.dart';
 import 'package:my_link_space/ui/views/register_nav_view.dart';
+import 'package:my_link_space/ui/views/verify_code_veiw.dart';
 import 'package:my_link_space/ui/views/sign_up_view.dart';
 import 'package:my_link_space/ui/views/splash_screen_view.dart';
 import 'package:my_link_space/utils/page_transition.dart';
@@ -75,6 +76,13 @@ class AppRouter {
         pageBuilder: (context, state) => PageTransition(
           key: state.pageKey,
           child: const RegisterNav(),
+        ),
+      ),
+      GoRoute(
+        path: '/setpassword',
+        pageBuilder: (context, state) => PageTransition(
+          key: state.pageKey,
+          child: SetPasswordView(),
         ),
       ),
     ],

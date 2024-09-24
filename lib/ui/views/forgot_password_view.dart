@@ -111,11 +111,11 @@ class ForgotPassword extends StatelessWidget {
                                           child: Icon(FontAwesomeIcons.close))
                                     ]));
                               } else {
+                                // Navigate to the ResetPasswordPage and pass email and code
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => ResetPasswordPage(),
-                                  ),
+                                      builder: (_) => ResetPasswordPage()),
                                 );
                               }
                             }
