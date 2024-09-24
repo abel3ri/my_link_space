@@ -13,7 +13,7 @@ class VerifyCodeViewModel with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final url = Uri.parse('http://192.168.1.108:8000/api/auth/verify-code-f');
+    final url = Uri.parse('http://192.168.200.35:8000/api/auth/verify-code-f');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},

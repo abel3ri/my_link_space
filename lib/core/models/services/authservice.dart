@@ -12,7 +12,7 @@ class AuthService extends ChangeNotifier {
   // Google signup or login
   Future<void> googleSignUpOrLogin(String googleToken) async {
     final response = await http.post(
-      Uri.parse('http://192.168.1.108:8000/api/auth/google-signup'),
+      Uri.parse('http://192.168.200.35:8000/api/auth/google-signup'),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -53,7 +53,7 @@ class AuthService extends ChangeNotifier {
     try {
       // Call your API with the token
       final response = await http.post(
-        Uri.parse('http://192.168.1.108:8000/api/auth/facebook-signup'),
+        Uri.parse('http://192.168.200.35:8000/api/auth/facebook-signup'),
         headers: {
           'Authorization': 'Bearer $token',
         },

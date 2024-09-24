@@ -55,7 +55,7 @@ class LogInViewModel extends ChangeNotifier {
 
     _setState(ViewState.busy);
 
-    final url = Uri.parse('http://192.168.1.108:8000/api/login/');
+    final url = Uri.parse('http://192.168.200.35:8000/api/login/');
     final body = jsonEncode({
       'email': email,
       'password': password,

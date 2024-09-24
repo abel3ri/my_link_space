@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ResetModel {
-  static const String baseUrl = 'http://192.168.1.108:8000/api/auth';
+  static const String baseUrl = 'http://192.168.200.35:8000/api/auth';
 
   Future<Map<String, dynamic>> forgotPassword(String email) async {
     try {

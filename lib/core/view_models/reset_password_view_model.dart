@@ -47,7 +47,7 @@ class ResetPasswordViewModel extends ChangeNotifier {
 
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.1.108:8000/api/auth/reset-password/'),
+        Uri.parse('http://192.168.200.35:8000/api/auth/reset-password/'),
         body: jsonEncode({
           'email': email,
           'code':

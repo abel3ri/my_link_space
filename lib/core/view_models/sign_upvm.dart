@@ -37,7 +37,7 @@ class SignUpvm extends ChangeNotifier {
   Future<void> register() async {
     if (formKey.currentState!.validate()) {
       _setLoading(true);
-      final url = Uri.parse('http://192.168.1.108:8000/api/register/');
+      final url = Uri.parse('http://192.168.200.35:8000/api/register/');
 
       try {
         final response = await http.post(
