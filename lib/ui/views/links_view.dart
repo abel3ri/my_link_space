@@ -9,7 +9,7 @@ import 'package:my_link_space/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class LinksView extends StatelessWidget {
-  LinksView({super.key});
+  const LinksView({super.key});
 
   @override
   Widget build(BuildContext context) {

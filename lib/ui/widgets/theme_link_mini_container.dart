@@ -14,7 +14,7 @@ class ThemeLinkMiniContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      margin: EdgeInsets.only(bottom: 4),
+      margin: const EdgeInsets.only(bottom: 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: color,

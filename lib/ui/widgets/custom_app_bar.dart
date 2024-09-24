@@ -11,14 +11,14 @@ PreferredSize CustomAppBar({
   bool showBottom = false,
 }) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(56),
+    preferredSize: const Size.fromHeight(56),
     child: AppBar(
       title: title,
       titleTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontWeight: FontWeight.bold,
           ),
       actions: [
-        UpgradeAction(),
+        const UpgradeAction(),
         IconButton(
           onPressed: () async {
             try {
@@ -29,11 +29,11 @@ PreferredSize CustomAppBar({
               ErrorModel(body: e.toString()).showError(context);
             }
           },
-          icon: FaIcon(Icons.share),
+          icon: const FaIcon(Icons.share),
         )
       ],
       bottom: showBottom
-          ? PreferredSize(
+          ? const PreferredSize(
               preferredSize: Size.fromHeight(4),
               child: LinearProgressIndicator())
           : null,

@@ -24,7 +24,7 @@ class LinkContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         child: Container(
           height: 48,
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
             color: fillColor,
@@ -36,7 +36,7 @@ class LinkContainer extends StatelessWidget {
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 child: FaIcon(icon, size: 18, color: Colors.white),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 label,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -45,7 +45,7 @@ class LinkContainer extends StatelessWidget {
                     ),
                 textAlign: TextAlign.center,
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ),

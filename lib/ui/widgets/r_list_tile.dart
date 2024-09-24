@@ -28,8 +28,9 @@ class RListTile extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
       ),
-      trailing:
-          !hideTrailing ? FaIcon(FontAwesomeIcons.angleRight, size: 16) : null,
+      trailing: !hideTrailing
+          ? const FaIcon(FontAwesomeIcons.angleRight, size: 16)
+          : null,
     );
   }
 }

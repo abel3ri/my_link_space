@@ -17,7 +17,7 @@ class AnalyticsView extends StatelessWidget {
     final linkViewModel = Provider.of<LinkViewModel>(context);
 
     if (linkViewModel.isLoading) {
-      return RLabeledCircularIndicator(
+      return const RLabeledCircularIndicator(
         label: "Loading Analytics Data",
       );
     } else if (linkViewModel.links.isEmpty) {
@@ -26,7 +26,7 @@ class AnalyticsView extends StatelessWidget {
           context: context,
           title: Text(context.localizations.analytics),
         ),
-        body: Center(
+        body: const Center(
           child: Text("There is no link to analyze!"),
         ),
       );
@@ -34,7 +34,7 @@ class AnalyticsView extends StatelessWidget {
 
     List<Map<String, dynamic>> links = linkViewModel.links
         .map((link) => {
-              "${link.title}": link.clickCount,
+              link.title: link.clickCount,
             })
         .toList();
 
@@ -44,8 +44,8 @@ class AnalyticsView extends StatelessWidget {
         title: Text(context.localizations.analytics),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
           children: [
             Center(
@@ -65,22 +65,22 @@ class AnalyticsView extends StatelessWidget {
                 RAnalyticsCol(
                   color: Colors.blue,
                   label: context.localizations.views,
-                  value: Text("N/A"),
+                  value: const Text("N/A"),
                 ),
                 RAnalyticsCol(
                   color: Colors.purple,
                   label: context.localizations.clicks,
-                  value: Text("N/A"),
+                  value: const Text("N/A"),
                 ),
                 RAnalyticsCol(
                   color: Colors.red,
                   label: context.localizations.subscibers,
-                  value: Text("N/A"),
+                  value: const Text("N/A"),
                 ),
                 RAnalyticsCol(
                   color: Colors.orange,
                   label: context.localizations.revenue,
-                  value: Text("N/A"),
+                  value: const Text("N/A"),
                 ),
               ],
             ),
@@ -113,7 +113,7 @@ class AnalyticsView extends StatelessWidget {
 class SocialLinkPieChart extends StatelessWidget {
   final List<Map<String, dynamic>> links;
 
-  SocialLinkPieChart({required this.links});
+  const SocialLinkPieChart({super.key, required this.links});
 
   // Generate colors for each link only once
   List<Color> _generateColors(int count) {
@@ -165,7 +165,7 @@ class SocialLinkPieChart extends StatelessWidget {
           value: clicks.toDouble(),
           title: '${percentage.toStringAsFixed(1)}%',
           radius: 50,
-          titleStyle: TextStyle(
+          titleStyle: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -191,10 +191,10 @@ class SocialLinkPieChart extends StatelessWidget {
               size: 12,
               color: color,
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Text(
               title,
-              style: TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 12),
             ),
           ],
         );
@@ -286,13 +286,13 @@ class ClicksBarChart extends StatelessWidget {
                     getTitlesWidget: (value, meta) {
                       switch (value.toInt()) {
                         case 0:
-                          return Text("Daily");
+                          return const Text("Daily");
                         case 1:
-                          return Text("Weekly");
+                          return const Text("Weekly");
                         case 2:
-                          return Text("Monthly");
+                          return const Text("Monthly");
                         default:
-                          return Text("");
+                          return const Text("");
                       }
                     },
                   ),
@@ -312,7 +312,7 @@ class ClicksBarChart extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         _buildLegend(),
       ],
     );
@@ -382,10 +382,10 @@ class ClicksBarChart extends StatelessWidget {
               size: 12,
               color: color,
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Text(
               title,
-              style: TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 12),
             ),
           ],
         );

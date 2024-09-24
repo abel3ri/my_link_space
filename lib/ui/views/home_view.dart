@@ -13,10 +13,10 @@ class HomeView extends StatelessWidget {
   HomeView({super.key});
   final List<Widget> pages = [
     LinksView(),
-    AppearanceView(),
-    PreviewView(),
-    AnalyticsView(),
-    MoreView(),
+    const AppearanceView(),
+    const PreviewView(),
+    const AnalyticsView(),
+    const MoreView(),
   ];
 
   @override
@@ -24,8 +24,8 @@ class HomeView extends StatelessWidget {
     final homeViewModel = Provider.of<HomeViewModel>(context);
     return Scaffold(
       body: IndexedStack(
-        children: pages,
         index: homeViewModel.index,
+        children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -35,23 +35,23 @@ class HomeView extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             label: context.localizations.links,
-            icon: FaIcon(FontAwesomeIcons.link),
+            icon: const FaIcon(FontAwesomeIcons.link),
           ),
           BottomNavigationBarItem(
             label: context.localizations.appearance,
-            icon: FaIcon(FontAwesomeIcons.shapes),
+            icon: const FaIcon(FontAwesomeIcons.shapes),
           ),
           BottomNavigationBarItem(
             label: context.localizations.preview,
-            icon: FaIcon(FontAwesomeIcons.eye),
+            icon: const FaIcon(FontAwesomeIcons.eye),
           ),
           BottomNavigationBarItem(
             label: context.localizations.analytics,
-            icon: FaIcon(FontAwesomeIcons.chartSimple),
+            icon: const FaIcon(FontAwesomeIcons.chartSimple),
           ),
           BottomNavigationBarItem(
             label: context.localizations.more,
-            icon: FaIcon(FontAwesomeIcons.circle),
+            icon: const FaIcon(FontAwesomeIcons.circle),
           ),
         ],
       ),

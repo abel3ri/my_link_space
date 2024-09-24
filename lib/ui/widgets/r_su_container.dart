@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RSubContainer extends StatelessWidget {
-  RSubContainer({
+  const RSubContainer({
     super.key,
     required this.label,
     required this.value,
@@ -17,7 +17,7 @@ class RSubContainer extends StatelessWidget {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
       height: height,
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         color: isDarkMode ? Colors.grey.shade700 : Colors.grey.shade200,

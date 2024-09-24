@@ -41,7 +41,7 @@ class AppearanceView extends StatelessWidget {
       body: ChangeNotifierProvider(
         create: (context) => ImagePickerViewModel(),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.symmetric(
             horizontal: 16,
             vertical: MediaQuery.of(context).size.height * 0.04,
@@ -160,11 +160,11 @@ class AppearanceView extends StatelessWidget {
                         value: "Bio",
                         height: MediaQuery.of(context).size.height * 0.1,
                       ),
-                      Align(
+                      const Align(
                         alignment: Alignment.centerRight,
                         child: Text("0 / 80"),
                       ),
-                      Divider(thickness: .4),
+                      const Divider(thickness: .4),
                       RTextButton(
                         label: context.localizations.addSocialIcons,
                         onPressed: () {},
@@ -181,7 +181,7 @@ class AppearanceView extends StatelessWidget {
                     constraints: BoxConstraints(
                       maxHeight: MediaQuery.of(context).size.height * 0.5,
                     ),
-                    padding: EdgeInsets.only(right: 16),
+                    padding: const EdgeInsets.only(right: 16),
                     decoration: BoxDecoration(
                       color:
                           Theme.of(context).colorScheme.primary.withOpacity(.1),
@@ -233,7 +233,8 @@ class AppearanceView extends StatelessWidget {
                                         0.02,
                                   ),
                                   ListView.separated(
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) {
                                       return Row(
@@ -272,7 +273,7 @@ class AppearanceView extends StatelessWidget {
                                   SizedBox(
                                     height: constraints.maxHeight * 0.02,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   FilledButton(
                                     onPressed: () {
                                       GoRouter.of(context).pushNamed("upgrade");
@@ -310,7 +311,8 @@ class AppearanceView extends StatelessWidget {
                     right: -5,
                     child: IconButton(
                       onPressed: () {},
-                      icon: FaIcon(FontAwesomeIcons.solidCircleXmark, size: 16),
+                      icon: const FaIcon(FontAwesomeIcons.solidCircleXmark,
+                          size: 16),
                     ),
                   )
                 ],
@@ -319,7 +321,7 @@ class AppearanceView extends StatelessWidget {
               RSubHeaderText(text: context.localizations.themes),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               profileThemeViewModel.themes.isEmpty
-                  ? RContainer(
+                  ? const RContainer(
                       child: Center(
                         child: Text(
                           "No themes to choose from. Default Theme will be Applied",
@@ -329,9 +331,10 @@ class AppearanceView extends StatelessWidget {
                     )
                   : RContainer(
                       child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           childAspectRatio: 1 / 1.5,
                           mainAxisSpacing: 8,
@@ -340,7 +343,6 @@ class AppearanceView extends StatelessWidget {
                         itemCount: profileThemeViewModel.themes.length,
                         itemBuilder: (context, index) {
                           final theme = profileThemeViewModel.themes[index];
-                          print(theme.buttonColor);
                           return ThemeLinkContainer(
                             color: Color(colorParser(theme.backgroundValue!))
                                 .withOpacity(.5),
@@ -444,9 +446,9 @@ class AppearanceView extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 8),
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Text(
                               "Aa",
                               style: Theme.of(context)
@@ -476,7 +478,7 @@ class AppearanceView extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    Text("#ffffff"),
+                    const Text("#ffffff"),
                   ],
                 ),
               ),
@@ -488,7 +490,7 @@ class AppearanceView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(context.localizations.hideMyLinkSpaceLogo),
-                        RUpgradeButton(),
+                        const RUpgradeButton(),
                       ],
                     ),
                   ],

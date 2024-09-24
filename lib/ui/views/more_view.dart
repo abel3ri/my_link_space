@@ -28,7 +28,7 @@ class MoreView extends StatelessWidget {
           horizontal: 16,
           vertical: MediaQuery.of(context).size.height * 0.04,
         ),
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,7 +36,7 @@ class MoreView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             RContainer(
               child: ListView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   RListTile(
@@ -51,7 +51,7 @@ class MoreView extends StatelessWidget {
                     onPressed: () {
                       rShowModalBottomSheet(
                         context: context,
-                        label: context.localizations.resetPassword + "?",
+                        label: "${context.localizations.resetPassword}?",
                         listTiles: [
                           RListTile(
                             title: context.localizations.resetPassword,
@@ -79,7 +79,7 @@ class MoreView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             RContainer(
               child: ListView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   RListTile(
@@ -166,7 +166,7 @@ class MoreView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             RContainer(
               child: ListView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   RListTile(
@@ -186,7 +186,7 @@ class MoreView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             RContainer(
               child: ListView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   RListTile(
@@ -209,7 +209,7 @@ class MoreView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RContainer(
               child: ListView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   RListTile(

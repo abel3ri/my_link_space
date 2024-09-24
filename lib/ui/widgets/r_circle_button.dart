@@ -12,7 +12,7 @@ class RCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      style: ButtonStyle(
+      style: const ButtonStyle(
         shape: WidgetStatePropertyAll(
           CircleBorder(
             side: BorderSide(

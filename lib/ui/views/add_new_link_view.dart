@@ -57,12 +57,12 @@ class AddNewLinkView extends StatelessWidget {
                   Center(
                     child: FilledButton(
                       child: linkViewModel.isLoading
-                          ? SizedBox(
+                          ? const SizedBox(
                               width: 16,
                               height: 16,
                               child: CircularProgressIndicator(),
                             )
-                          : Text("Create"),
+                          : const Text("Create"),
                       onPressed: () async {
                         if (addNewLinkViewModel.formKey.currentState!
                             .validate()) {

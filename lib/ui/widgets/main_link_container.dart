@@ -24,8 +24,8 @@ class MainLinkContainer extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
       clipBehavior: Clip.hardEdge,
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      margin: EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: isDarkMode
             ? isActive
@@ -37,13 +37,13 @@ class MainLinkContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
       ),
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(
+        contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
           vertical: 8,
         ),
         leading: ReorderableDragStartListener(
           index: index,
-          child: FaIcon(FontAwesomeIcons.gripVertical),
+          child: const FaIcon(FontAwesomeIcons.gripVertical),
         ),
         title: Text(
           title,
@@ -64,7 +64,7 @@ class MainLinkContainer extends StatelessWidget {
             SizedBox(
               height: 36,
               child: ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {

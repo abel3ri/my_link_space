@@ -49,7 +49,7 @@ class UpgradeView extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   scale: .5,
@@ -66,7 +66,7 @@ class UpgradeView extends StatelessWidget {
                 onPressed: () {
                   GoRouter.of(context).pop();
                 },
-                icon: FaIcon(
+                icon: const FaIcon(
                   FontAwesomeIcons.arrowLeft,
                   color: Colors.black,
                 ),
@@ -76,7 +76,7 @@ class UpgradeView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         child: Column(
           children: [
             Text(
@@ -88,7 +88,7 @@ class UpgradeView extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return Row(
@@ -118,7 +118,7 @@ class UpgradeView extends StatelessWidget {
               },
               itemCount: 4,
             ),
-            Spacer(),
+            const Spacer(),
             RButton(
               label: context.localizations.upgrade,
               onPressed: () async {

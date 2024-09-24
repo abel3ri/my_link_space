@@ -10,7 +10,7 @@ rShowModalBottomSheet({
     isScrollControlled: true,
     context: context,
     builder: (context) => Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 12,
         vertical: 16,
       ),

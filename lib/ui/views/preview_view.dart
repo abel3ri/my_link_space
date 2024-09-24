@@ -35,7 +35,7 @@ class PreviewView extends StatelessWidget {
         child: Consumer<PreviewViewModel>(
           builder: (context, previewViewModel, child) {
             if (previewViewModel.isLoading) {
-              return RLabeledCircularIndicator(
+              return const RLabeledCircularIndicator(
                 label: "Loading your links",
               );
             }
@@ -43,11 +43,12 @@ class PreviewView extends StatelessWidget {
             return RefreshIndicator(
               onRefresh: () => previewViewModel.getProfile(),
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                physics: BouncingScrollPhysics(),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RCircleButton(
@@ -58,7 +59,7 @@ class PreviewView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 36,
                       backgroundImage: AssetImage("assets/asset_1.png"),
                     ),
@@ -75,16 +76,16 @@ class PreviewView extends StatelessWidget {
                         ),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.005),
-                        Icon(Icons.verified_rounded, size: 16),
+                        const Icon(Icons.verified_rounded, size: 16),
                       ],
                     ),
-                    Text("@kuraz_tech"),
+                    const Text("@kuraz_tech"),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                     SizedBox(
                       height: 32,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         separatorBuilder: (context, index) => SizedBox(
                             width: MediaQuery.of(context).size.width * 0.03),
@@ -115,7 +116,7 @@ class PreviewView extends StatelessWidget {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                     ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (context, index) => SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
@@ -144,8 +145,9 @@ class PreviewView extends StatelessWidget {
                               ErrorModel(body: e.toString()).showError(context);
                             }
                           },
-                          fillColor:
-                              !isDarkMode ? Colors.white : Color(0xFF1A1A1A),
+                          fillColor: !isDarkMode
+                              ? Colors.white
+                              : const Color(0xFF1A1A1A),
                           icon: FontAwesomeIcons.globe,
                           label: linkViewModel.links[index].title,
                         );
@@ -163,7 +165,7 @@ class PreviewView extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
-                        FaIcon(FontAwesomeIcons.meteor),
+                        const FaIcon(FontAwesomeIcons.meteor),
                       ],
                     ),
                   ],

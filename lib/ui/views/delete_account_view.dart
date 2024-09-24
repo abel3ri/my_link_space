@@ -15,20 +15,20 @@ class DeleteAccountView extends StatelessWidget {
         title: Text(context.localizations.deleteAccount),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Theme.of(context).colorScheme.errorContainer,
               ),
               child: Row(
                 children: [
-                  FaIcon(
+                  const FaIcon(
                     FontAwesomeIcons.circleExclamation,
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.02),
@@ -51,7 +51,7 @@ class DeleteAccountView extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text:
                         "below, your primary tree (@uiland) will be immediately terminated and your data will be lost. Visitors will no longer be able to access your URL",
                   ),

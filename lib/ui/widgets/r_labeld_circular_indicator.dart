@@ -14,7 +14,7 @@ class RLabeledCircularIndicator extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(
+          const CircularProgressIndicator(
             strokeWidth: 7,
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
